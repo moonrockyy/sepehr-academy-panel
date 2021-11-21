@@ -1,0 +1,90 @@
+// If you want to override variables do it here
+@import "variables";
+
+$enable-ltr: true;
+$enable-rtl: true;
+@font-face {
+  font-family: Dirooz;
+  src: url('./../assets/fonts/Dirooz.ttf') ;
+}
+
+body {
+  direction: rtl;
+  font-family: Dirooz !important;
+}
+
+@media only screen and (min-width: 768px) {
+  html:not([dir="rtl"]) .sidebar.sidebar-fixed:not(.sidebar-end) {
+    right: 0 !important;
+  }
+  html:not([dir="rtl"]) .sidebar.hide:not(.sidebar-end) {
+    margin-right: calc(-1 * var(--cui-sidebar-width)) !important;
+  }
+}
+
+html:not([dir="rtl"]) .wrapper {
+  padding-left: 0 !important;
+  padding-right: var(--cui-sidebar-occupy-start, 0);
+}
+
+html:not([dir="rtl"]) .sidebar.sidebar-fixed:not(.sidebar-end) {
+  right: 0;
+}
+
+html:not([dir="rtl"]) .sidebar:not(.sidebar-end) {
+  margin-right: 0;
+}
+
+html:not([dir="rtl"]) .sidebar.hide:not(.sidebar-end) {
+  margin-right: calc(-1 * var(--cui-sidebar-width));
+}
+
+.admin-header {
+  background: #E1F7ED !important;
+}
+
+.admin-nav-link {
+  color: #323E73 !important;
+  opacity: 80%;
+}
+
+.active-admin-header {
+  color: #323E73 !important;
+  opacity: 100%;
+}
+
+.admin-nav-link:hover {
+  opacity: 100%;
+}
+
+.dropdown > .nav-link {
+  opacity: 100% !important;
+}
+
+.sidebar {
+  background: #323E73 !important;
+}
+
+.simplebar-content > .nav-item > .nav-link {
+  color: #F3FCF8 !important;
+}
+
+.nav-link.nav-group-toggle {
+  color: #F3FCF8 !important;
+}
+
+.nav-group-items > .nav-item > .nav-link {
+  color:  #82d8b9 !important;
+}
+
+// Import CoreUI for React components library
+@import "@coreui/coreui/scss/coreui";
+
+// Import Chart.js custom tooltips styles
+@import "@coreui/chartjs/scss/coreui-chartjs";
+
+@import "layout";
+@import "example";
+
+// If you want to add custom CSS you can put it here.
+@import "custom";

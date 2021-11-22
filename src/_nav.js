@@ -203,7 +203,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'نمایش همه ترم ها',
-        to: '/icons/coreui-icons',
+        to: '/all-terms',
         // badge: {
         //   color: 'success',
         //   text: 'NEW',

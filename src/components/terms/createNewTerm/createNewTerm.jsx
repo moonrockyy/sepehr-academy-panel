@@ -1,10 +1,10 @@
 import React from 'react';
 import "./createNewTerm.css"
-import "../searchBox/serachbox.css"
-import PanelTitle from "../panel-title/panelTitle";
+import "../../searchBox/serachbox.css"
+import PanelTitle from "../../panel-title/panelTitle";
 import { useFormik } from "formik";
 import { ToastContainer } from "react-toastify";
-import CreateTerm from "../../core/services/api/createTerm.api";
+import CreateTerm from "../../../core/services/api/createTerm.api";
 
 const CreateNewTerm = () => {
   const initialValues = {

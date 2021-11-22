@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import GetAllTerms from "../../../core/services/api/getAllTerms.api";
-import "./panelTable.css"
+import "./showAllTerms.css"
 import {FaUsers} from "react-icons/all";
 
 const ShowAllTerms = () => {
@@ -17,7 +17,7 @@ const ShowAllTerms = () => {
   console.log(allTermsData)
   return (
     <>
-      <table className="table panel-table table-borderless">
+      <table className="table panel-table table-borderless ">
         <thead className={"thead-color"}>
         <tr className={"tr-color"}>
           <th scope="col ">نام ترم</th>

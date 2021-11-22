@@ -60,7 +60,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'اضافه کردن دوره جدید',
-        to: '/base/breadcrumbs',
+        to: '/create-course',
       },
       {
         component: CNavItem,

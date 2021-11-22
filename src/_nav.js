@@ -212,7 +212,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'اضافه کردن  ترم جدید',
-        to: '/icons/flags',
+        to: '/create-term',
       },
       {
         component: CNavItem,

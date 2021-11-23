@@ -30,7 +30,8 @@
 }
 
 .btn-container {
-  background: #82d8b9;
+  background: #323e73 !important;
+  color: #fff !important;
   width: 200px;
   margin: 0 auto;
 }
@@ -48,11 +49,12 @@
 }
 
 .login-btn {
-  background: #82d8b9 !important;
+  background: #323e73 !important;
+  color: #fff !important;
 }
 
 .login-btn:hover {
-  background: #40d8b9 !important;
+  background: #152e73 !important;
 }
 
 .login-image {

@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+    background: url("../../assets/img/background.png") repeat-x 30%;
+    box-shadow: 0 3px 10px #e1f7ed !important;
+}
+
+.login-form .form-control {
+    border: none;
+    width: 100% !important;
+    height: 33px;
+    background: #ffffff;
+    color: #198643 !important;
+    box-shadow: 0 3px 10px #e1f7ed;
+    border-radius: 5px;
+}
+
+.login-form .form-control:focus {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+}
+
+.login-form .form-control::placeholder {
+    color: #198643;
+    padding-right: 8px;
+    opacity: 80%;
+}
+
+.btn-container {
+    background: #82d8b9;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.text-color {
+    color: #323e73 !important;
+}
+
+.forget-pass {
+    text-decoration: none;
+}
+
+.forget-pass:hover {
+    color: #323e73 !important;
+}
+
+.login-btn {
+    background: #82d8b9 !important;
+}
+
+.login-btn:hover {
+    background: #40d8b9 !important;
+}
+
+.login-image {
+    margin-right: 80px;
+    width: 530px;
+    height: 420px;
+    position: relative;
+    bottom: 15px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .login-container {
+        background: url("../../assets/img/background.png") repeat-x;
+    }
+    .login-image {
+        width: 450px;
+        height: 350px;
+        position: relative;
+        left: 40px;
+    }
+    .form-change {
+        position: relative;
+        top: -50px;
+    }
+}
+
+.check-pass {
+    margin-right: 10px;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.tx-color {
+    color: #198643 !important;
+    cursor: pointer;
+}
+
+.tx-color:hover {
+    color: #323e73 !important;
+}

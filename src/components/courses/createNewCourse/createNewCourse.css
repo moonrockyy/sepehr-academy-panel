@@ -18,7 +18,6 @@
 }
 
 .text-aria::placeholder {
-  color: #198643;
   padding-right: 8px;
   font-size: 15px;
   opacity: 80%;
@@ -79,7 +78,15 @@
   background-color: #198643;
   color: white;
 }
+.btn-green:focus{
+  background-color: #198643;
+  color: white;
+}
 .btn-blue:hover{
+  background-color: #323e73;
+  color: white;
+}
+.btn-blue:focus{
   background-color: #323e73;
   color: white;
 }

@@ -2,14 +2,16 @@ import React, {useEffect, useState} from 'react';
 import "../../searchBox/serachbox.css"
 import "./createNewCourse.css"
 import {useFormik} from "formik";
-import {ToastContainer} from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import cloud from "../../../assets/images/cloud-computing.png"
+import PostImage from "../../../core/services/api/postImage.api";
+import CreateCourse from "../../../core/services/api/createCourse.api";
 
 const CreateNewCourse = () => {
   const [selectedFile, setSelectedFile] = useState()
+  const [imageAddress, setImageAddress] = useState("")
   const [preview, setPreview] = useState()
 
-  // create a preview as a side effect, whenever selected file is changed
   useEffect(() => {
     if (!selectedFile) {
       setPreview(undefined)
@@ -19,7 +21,6 @@ const CreateNewCourse = () => {
     const objectUrl = URL.createObjectURL(selectedFile)
     setPreview(objectUrl)
 
-    // free memory when ever this component is unmounted
     return () => URL.revokeObjectURL(objectUrl)
   }, [selectedFile])
 
@@ -29,26 +30,37 @@ const CreateNewCourse = () => {
       return
     }
 
-    // I've kept this example simple by using the first image instead of multiple
     setSelectedFile(e.target.files[0])
   }
   const initialValues = {
     courseName: "",
     topics: [],
     description: "",
-    image: "",
+    image: imageAddress,
   };
+
+  const handleClick = async () => {
+    try {
+      const result = await PostImage();
+      console.log(result.data.result)
+      setImageAddress(result.data.result)
+      console.log(imageAddress)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   const onSubmit = async (values) => {
     const coursePostData = {
       courseName: values.courseName,
-      topics: values.topics,
+      topics:  [values.topics],
       description: values.description,
-      image: values.image,
+      image: imageAddress,
     };
+    const result = await CreateCourse(coursePostData);
     console.log(coursePostData)
-    // const result = await CreateTerm(coursePostData);
-    console.log("what the f")
+    console.log(result);
+    // toast.success(result.data.message[0].message);
   }
 
   const validate = (values) => {
@@ -59,17 +71,12 @@ const CreateNewCourse = () => {
     }
 
     if (!values.topics) {
-      errors.topics = "موضوع دوره را وارد کنید";
+      errors.topics = " موضوع دوره را وارد کنید ";
     }
 
     if (!values.description) {
       errors.description = "توضیحات دوره را وارد کنید";
     }
-
-    if (!values.image) {
-      errors.image = "";
-    }
-
     return errors;
   };
 
@@ -158,21 +165,24 @@ const CreateNewCourse = () => {
                   <button className={"btn btn-upload"}>
                     <span className={"upload-avatar-text"}>آپلود تصویر</span>
                     <img className={"upload-icon"} src={cloud} alt="cloud"/>
-                    <input className="form-control visibility-none" onChange={onSelectFile}  type="file" id="formFile"
-                           aria-label="upload"/>
+                    <input className="form-control visibility-none" onChange={onSelectFile} type="file" id="formFile"
+                           aria-label="upload"
+                    />
                   </button>
-                  <span className={"upload-text-2"}> تصویر خود را بارگذاری کنید...</span>
-                  <div className={"d-flex justify-content-center uploaded-img-position"}>
-                    {selectedFile &&  <img className={"uploaded-img"} width={200} src={preview}  alt={""}/> }
-                  </div>
+                  <button onClick={handleClick} type={"button"}
+                          className={"upload-text-2 btn btn-primary text-light"}> بارگذاری کنید
+                  </button>
+                </div>
+                <div className={"me-3 mb-4"}>
+                  {selectedFile && <img className={"uploaded-img"} width={200} src={preview} alt={""}/>}
                 </div>
               </div>
-
-
             </div>
             <div className={"row mt-4 mb-3 me-2"}>
-              <button className={" btn-green btn btn-hover"} type={"submit"}>ثبت</button>
-              <button className={" btn-blue btn me-2 mb-3 btn-hover"}> ریست</button>
+              <div className={"d-flex justify-content-center"}>
+                <button className={" btn-green btn btn-hover"} type={"submit"}>ثبت</button>
+                <button className={" btn-blue btn me-2 mb-3 btn-hover"}> ریست</button>
+              </div>
             </div>
           </form>
         </div>

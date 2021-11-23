@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import LoginButton from '../LoginButton/LoginButton'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import eyeImg from '../../../assets/images/eyeicon.png'
 import LoginUser from '../../../core/services/api/Login.api'
@@ -21,12 +21,12 @@ const LoginForm = () => {
       password: values.password,
     }
 
-    const result = await LoginUser(userLogin)
-    setTimeout(() => {
-      {
-        result && history.push('/')
-      }
-    }, 2500)
+    await LoginUser(userLogin)
+    // setTimeout(() => {
+    //   {
+    //     result && history.push('/')
+    //   }
+    // }, 2500)
   }
 
   const validate = (values) => {

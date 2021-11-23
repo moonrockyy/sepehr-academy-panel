@@ -6,7 +6,7 @@ const MainUrl = process.env.REACT_APP_PUBLIC_PATH;
 
 const RegisterUser = async (userRegister) => {
   try {
-    const result = await http.post(`${MainUrl}api/auth/register`, userRegister);
+    const result = await http.post(`${MainUrl}api/auth/employee/register`, userRegister);
 
     const token = result.data.result.jwtToken;
     setItem("token", token);

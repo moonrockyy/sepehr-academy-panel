@@ -1,8 +1,8 @@
 import React from "react";
 import BtnContainer from "./BtnContainer/BtnContainer";
-import LoginTitle from "../LoginTitle/LoginTitle";
-import LoginForm from "../LoginForm/LoginForm";
-import LoginImg from "../LoginImg/LoginImg";
+import LoginTitle from "./LoginTitle/LoginTitle";
+import LoginForm from "./LoginForm/LoginForm";
+import LoginImg from "./LoginImg/LoginImg";
 import "./Login.css";
 
 const Login = () => {

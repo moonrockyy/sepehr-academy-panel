@@ -1,60 +1,58 @@
-import React, { useState } from "react";
-import { useFormik } from "formik";
-import LoginButton from "../LoginButton/LoginButton";
-import { Link, useHistory } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-
-import eyeImg from "../../../assets/img/eyeicon.png";
-import "../Login.css";
-import LoginUser from "../../../core/services/API/auth/Login.api";
-
+import React, { useState } from 'react'
+import { useFormik } from 'formik'
+import LoginButton from '../LoginButton/LoginButton'
+import { Link, useHistory } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import eyeImg from '../../../assets/images/eyeicon.png'
+import LoginUser from '../../../core/services/api/Login.api'
+import '../Login.css'
 
 const LoginForm = () => {
   const initialValues = {
-    email: "",
-    password: "",
-  };
+    email: '',
+    password: '',
+  }
 
-  const history = useHistory();
+  const history = useHistory()
 
   const onSubmit = async (values) => {
     const userLogin = {
       email: values.email,
       password: values.password,
-    };
+    }
 
-    const result = await LoginUser(userLogin);
+    const result = await LoginUser(userLogin)
     setTimeout(() => {
       {
-        result && history.push("/");
+        result && history.push('/')
       }
-    }, 2500);
-  };
+    }, 2500)
+  }
 
   const validate = (values) => {
-    let errors = {};
+    let errors = {}
 
     if (!values.email) {
-      errors.email = "ایمیل خود را وارد کنید";
+      errors.email = 'ایمیل خود را وارد کنید'
     }
 
     if (!values.password) {
-      errors.password = "رمز عبور خود را وارد کنید";
+      errors.password = 'رمز عبور خود را وارد کنید'
     }
 
-    return errors;
-  };
+    return errors
+  }
 
   const formik = useFormik({
     initialValues,
     onSubmit,
     validate,
-  });
+  })
 
-  const [passwordShown, setPasswordShown] = useState(true);
+  const [passwordShown, setPasswordShown] = useState(true)
   return (
     <>
-      <ToastContainer position="top-center" limit={1} autoClose={2500} rtl={true}/>
+      <ToastContainer position="top-center" limit={1} autoClose={2500} rtl={true} />
       <form onSubmit={formik.handleSubmit} className="mt-4">
         <div className="mb-3">
           <input
@@ -69,17 +67,13 @@ const LoginForm = () => {
             autoComplete="off"
           />
           <div className="mt-1 text-danger">
-            {formik.touched.email && formik.errors.email ? (
-              <div>{formik.errors.email}</div>
-            ) : null}
+            {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
           </div>
         </div>
 
-
         <div className="mb-3 pass-form">
           <input
-            type={passwordShown ? "password" : "text"}
-
+            type={passwordShown ? 'password' : 'text'}
             className="form-control"
             placeholder="رمز عبور"
             id="password"
@@ -90,16 +84,14 @@ const LoginForm = () => {
             autoComplete="off"
           />
 
-
           <div
             className="pass-eye"
             onClick={() => {
-              setPasswordShown(!passwordShown);
+              setPasswordShown(!passwordShown)
             }}
           >
             <img src={eyeImg} />
           </div>
-
 
           <div className="text-danger mt-1">
             {formik.touched.password && formik.errors.password ? (
@@ -107,19 +99,13 @@ const LoginForm = () => {
             ) : null}
           </div>
         </div>
-        <div className="mb-3 d-flex justify-content-end">
-          <div className="form-text">
-            <Link className="forget-pass text-success" to={"/forgetPassword"}>
-              رمز عبور خود را فراموش کردم
-            </Link>
-          </div>
-        </div>
+
         <div className="d-flex justify-content-center">
           <LoginButton />
         </div>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

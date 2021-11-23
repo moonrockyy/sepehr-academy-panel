@@ -9,7 +9,7 @@ const BtnContainer = () => {
       </Link>
 
       <button className={`btn m-1 rounded-pill text-color bg-light`}>
-        ورود کاربران
+        ورود ادمین
       </button>
     </div>
   );

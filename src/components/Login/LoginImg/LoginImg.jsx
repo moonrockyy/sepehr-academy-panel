@@ -1,5 +1,5 @@
 import React from "react";
-import login from "../../../assets/img/login.svg";
+import login from "../../../assets/images/admin-login.svg";
 
 const LoginImg = () => {
   return (

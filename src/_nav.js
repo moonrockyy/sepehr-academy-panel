@@ -55,7 +55,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'نمایش همه دوره ها',
-        to: '/base/accordion',
+        to: '/all-courses'
       },
       {
         component: CNavItem,

@@ -245,6 +245,7 @@ const CreateNewTerm = () => {
               </div>
             </div>
             <div className={"row mt-3 mb-3 me-2"}>
+              <div className={"d-flex justify-content-center"}>
               <div>
                 <button onClick={handleSnackBar} className={" btn-green btn btn-hover"} type={"submit"}>ثبت</button>
                 {termGetData && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
@@ -254,6 +255,7 @@ const CreateNewTerm = () => {
                 </Snackbar>}
               </div>
               <button className={" btn-blue btn me-2 mb-3 btn-hover"}> ریست</button>
+            </div>
             </div>
           </form>
         </div>

@@ -150,7 +150,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'نمایش همه مقالات',
-        to: '/forms/form-control',
+        to: '/all-news',
       },
       {
         component: CNavItem,

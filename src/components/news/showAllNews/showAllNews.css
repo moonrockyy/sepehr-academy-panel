@@ -7,24 +7,18 @@
   font-size: 14px;
 }
 
-.course-td-items {
+.panel-td-items {
   color: #323e73 !important;
   opacity: 80%;
   font-size: 14px;
-  padding: 10px !important;
-}
-.course-td-items-topics{
-  color: #6247AA !important;
-  opacity: 80%;
-  font-size: 14px;
-  padding: 10px !important;
+  padding: 13px !important;
 }
 
-.course-th-items {
+.panel-th-items {
   color: #2eb5dd !important;
   font-size: 12px;
-  padding-top: 4px !important;
-  padding-right: 10px !important;
+  padding-top: 16px !important;
+  padding-right: 16px !important;
 }
 
 .green-hover {
@@ -47,7 +41,21 @@
   border-radius: 3px;
 }
 
-.course-img {
-  width: 65px;
+.table-news-img {
+  width: 120px;
+  margin-left: 6px;
   border-radius: 2px;
+}
+.mainDiv{
+  border-radius: 10px;
+  background-color: #C9E9D5;
+  box-shadow: 0 3px 10px #E1F7ED;
+  color: #323e73 ;
+  text-align: center;
+  height: 60px;
+}
+
+h4{
+  position: relative;
+  top: 14px;
 }

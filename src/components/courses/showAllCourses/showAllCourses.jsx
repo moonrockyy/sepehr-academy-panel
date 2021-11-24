@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import GetAllCourses from "../../../core/services/api/getAllCourses.api";
 import "./showAllCourses.css";
+import {Link} from "react-router-dom";
+
 const ShowAllCourses = () => {
   const [allCoursesData, setAllCoursesData] = useState([]);
 
@@ -27,19 +29,28 @@ const ShowAllCourses = () => {
             <th scope="col ">موضوع دوره</th>
             <th scope="col ">توضیحات دوره</th>
             <th scope="col "> تصویر دوره</th>
+            <th scope="col ">تنظیمات</th>
           </tr>
           </thead>
           <tbody>
           {Object.entries(allCoursesData).map(item => <tr key={item._id} className={"green-hover"}>
-            <th scope="row" className={"course-th-items"}>
-              {item[1].courseName}
-            </th>
-            <td className={"course-td-items-topics"}> {item[1].topics[0]}</td>
-            <td className={"course-td-items"}> {item[1].description}</td>
-            <td className={"course-td-items"}>
-              <img className={"course-img"} src={item[1].image} alt=""/>
-            </td>
-          </tr>)}
+              <Link to={`/course-info/${item[1]._id}`}>
+                <th scope="row" className={"course-th-items"}>
+                  {item[1].courseName}
+                </th>
+              </Link>
+              <td className={"course-td-items-topics"}> {item[1].topics[0]}</td>
+              <td className={"course-td-items"}> {item[1].description}</td>
+              <td className={"course-td-items"}>
+                <img className={"course-img"} src={item[1].image} alt=""/>
+              </td>
+              <td className={"course-td-btn"}>
+                <Link to={`/course-info/${item[1]._id}`}>
+                  <button className={"btn btn-outline-danger btn-sm "}> حذف </button>
+                </Link>
+              </td>
+            </tr>
+          )}
 
           </tbody>
         </table>

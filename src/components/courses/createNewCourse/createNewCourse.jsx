@@ -63,7 +63,6 @@ const CreateNewCourse = () => {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   };
 

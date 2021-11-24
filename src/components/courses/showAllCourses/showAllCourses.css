@@ -13,7 +13,8 @@
   font-size: 14px;
   padding: 10px !important;
 }
-.course-td-items-topics{
+
+.course-td-items-topics {
   color: #6247AA !important;
   opacity: 80%;
   font-size: 14px;
@@ -50,4 +51,9 @@
 .course-img {
   width: 65px;
   border-radius: 2px;
+}
+
+.course-td-btn {
+  opacity: 95%;
+  padding: 10px !important;
 }

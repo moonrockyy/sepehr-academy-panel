@@ -65,7 +65,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'حذف دوره',
-        to: '/base/cards',
+        to: '/all-courses',
       },
       {
         component: CNavItem,

@@ -7,6 +7,7 @@ const ShowAllCourses = React.lazy(() => import('./components/courses/showAllCour
 const CreateCourse = React.lazy(() => import('./components/courses/createNewCourse/createNewCourse'))
 const CreateNews = React.lazy(() => import('./components/news/createNewNews/createNewNews'))
 const ShowAllNews = React.lazy(() => import('./components/news/showAllNews/showAllNews'))
+const CourseInfoById = React.lazy(() => import('./components/courses/courseInfoById/courseInfoById'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -17,6 +18,7 @@ const routes = [
   { path: '/create-course', name: 'create-course', component: CreateCourse },
   { path: '/create-news', name: 'create-news', component: CreateNews },
   { path: '/all-news', name: 'all-news', component: ShowAllNews },
+  { path: '/course-info/:id', name: 'course-info', component: CourseInfoById },
 ]
 
 export default routes

@@ -155,7 +155,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'اضافه کردن مقاله جدید',
-        to: '/forms/select',
+        to: '/create-news',
       },
       {
         component: CNavItem,

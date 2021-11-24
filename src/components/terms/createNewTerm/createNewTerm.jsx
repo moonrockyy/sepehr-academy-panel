@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./createNewTerm.css"
 import "../../searchBox/serachbox.css"
 import PanelTitle from "../../panel-title/panelTitle";
 import { useFormik } from "formik";
 import { ToastContainer } from "react-toastify";
 import CreateTerm from "../../../core/services/api/createTerm.api";
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Alert from "@mui/material/Alert";
 
 const CreateNewTerm = () => {
+  const [open, setOpen] = useState(false)
+  const [termGetData, setTermGetData] = useState(null)
+
   const initialValues = {
     title: "",
     cost: "",
@@ -16,6 +23,30 @@ const CreateNewTerm = () => {
     teacher: "",
     course: "",
   };
+
+  const handleSnackBar = () => {
+    setOpen(true);
+  };
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
 
   const onSubmit = async (values) => {
     const termPostData = {
@@ -29,6 +60,7 @@ const CreateNewTerm = () => {
     };
     console.log(termPostData)
     const result = await CreateTerm(termPostData);
+    setTermGetData(result.data.message[0].message)
 
   }
 
@@ -213,7 +245,14 @@ const CreateNewTerm = () => {
               </div>
             </div>
             <div className={"row mt-3 mb-3 me-2"}>
-              <button className={" btn-green btn btn-hover"} type={"submit"}>ثبت</button>
+              <div>
+                <button onClick={handleSnackBar} className={" btn-green btn btn-hover"} type={"submit"}>ثبت</button>
+                {termGetData && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    {termGetData}
+                  </Alert>
+                </Snackbar>}
+              </div>
               <button className={" btn-blue btn me-2 mb-3 btn-hover"}> ریست</button>
             </div>
           </form>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import GetAllStudents from '../../../core/services/api/GetAllStudents'
-import './showAllCourses.css'
+import './showAllStudents.css'
 
 const ShowAllStudents = () => {
   const [allStudentsData, setAllStudentsData] = useState([])
@@ -30,7 +30,7 @@ const ShowAllStudents = () => {
               <th scope="col">نام دانش آموز</th>
               <th scope="col">ایمیل</th>
               <th scope="col">شماره موبایل</th>
-              <th></th>
+              <th>تنظیمات</th>
             </tr>
           </thead>
           <tbody>

@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import GetAllEmployees from '../../../core/services/api/GetAllEmployees.api'
-import './showAllEmployees.css'
+import GetAllTeachers from '../../../core/services/api/GetAllTeachers.api'
+import './showAllTeachers.css'
 
 const ShowAlladmins = () => {
-  const [allEmployeesData, setAllEmployeesData] = useState([])
+  const [allTeachersData, setAllTeachersData] = useState([])
 
-  const getEmployees = async () => {
-    const result = await GetAllEmployees()
-    setAllEmployeesData(result)
+  const getTeachers = async () => {
+    const result = await GetAllTeachers()
+    setAllTeachersData(result)
   }
   useEffect(() => {
-    getEmployees()
+    getTeachers()
   }, [])
 
   const handleDelete = async (admin) => {
-    const filterData = allEmployeesData.filter((st) => admin._id !== st._id)
-    setAllEmployeesData(filterData)
+    const filterData = allTeachersData.filter((st) => admin._id !== st._id)
+    setAllTeachersData(filterData)
   }
   return (
     <>
       <div className="course-body mt-4">
         <div className="mainDiv container mt-4 mb-5">
-          <h4>{'همه کارکنان'}</h4>
+          <h4>{'همه معلم ها'}</h4>
         </div>
         <table className="table panel-table table-borderless ">
           <thead className={'thead-color'}>
@@ -33,7 +33,7 @@ const ShowAlladmins = () => {
             </tr>
           </thead>
           <tbody>
-            {allEmployeesData.map((admin) => (
+            {allTeachersData.map((admin) => (
               <tr key={admin._id} className={'green-hover'}>
                 <td scope="row" className={'course-td-items-topics'}>
                   {admin.fullName}

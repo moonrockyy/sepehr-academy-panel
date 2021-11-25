@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { getItem } from '../../core/services/storage/storage'
 import GetEmployeeDetail from '../../core/services/api/GetEmployeeDetail.api'
-import jwt_decode from 'jwt-decode'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   CContainer,
@@ -29,13 +28,10 @@ const AppHeader = () => {
 
   useEffect(() => {
     doInfo()
-  })
+  },[])
 
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
-  const token = getItem('token')
-  const name = jwt_decode(token)
-  console.log(name)
 
   return (
     <CHeader position="sticky" className="mb-4 admin-header">

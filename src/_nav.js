@@ -27,16 +27,38 @@ const _nav = [
     name: 'پروفایل',
   },
   {
-    component: CNavItem,
-    name: 'کاربرها',
-    to: '/all-employees',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    component: CNavGroup,
+    name: 'اطلاعات من',
+    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'مشاهده اطلاعات',
+        to: '/info',
+      },
+      {
+        component: CNavItem,
+        name: 'ویرایش اطلاعات',
+        to: '/update-info',
+      },
+    ],
   },
   {
-    component: CNavItem,
-    name: 'ویرایش',
-    to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    component: CNavGroup,
+    name: 'کاربران',
+    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'نمایش همه ادمین ها',
+        to: '/all-employees',
+      },
+      {
+        component: CNavItem,
+        name: 'نمایش همه معلم ها',
+        to: '/all-teachers',
+      },
+    ],
   },
   {
     component: CNavTitle,

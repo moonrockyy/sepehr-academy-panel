@@ -20,6 +20,10 @@ const ShowAllStudents = React.lazy(() =>
   import('./components/Students/ShowAllStudents/ShowAllStudents'),
 )
 
+const ShowAllEmployees = React.lazy(() =>
+  import('./components/Employees/ShowAllEmployees/ShowAllEmployees'),
+)
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/login', name: 'Login', component: Login },
@@ -33,6 +37,7 @@ const routes = [
   { path: '/all-news', name: 'all-news', component: ShowAllNews },
   { path: '/course-info/:id', name: 'course-info', component: CourseInfoById },
   { path: '/all-students', name: 'all-students', component: ShowAllStudents },
+  { path: '/all-employees', name: 'all-employees', component: ShowAllEmployees },
 ]
 
 export default routes

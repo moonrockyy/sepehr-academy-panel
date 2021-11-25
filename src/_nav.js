@@ -165,7 +165,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'بروزرسانی مقاله',
-        to: '/forms/range',
+        to: '/all-news',
       },
       // {
       //   component: CNavItem,

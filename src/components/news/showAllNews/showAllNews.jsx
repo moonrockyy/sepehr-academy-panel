@@ -46,9 +46,11 @@ const ShowAllNews = () => {
             <div className={"row"}>
               <div className={"col-4"}>
                 <Tooltip title="edit">
-                  <IconButton>
-                    <ModeEditTwoToneIcon className={"edit-color"}/>
-                  </IconButton>
+                  <Link to={`/update-news/${item[1]._id}`}>
+                    <IconButton>
+                      <ModeEditTwoToneIcon className={"edit-color"}/>
+                    </IconButton>
+                  </Link>
                 </Tooltip>
               </div>
               <div className={"col-4"}>

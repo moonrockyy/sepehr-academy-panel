@@ -9,6 +9,7 @@ const CreateNews = React.lazy(() => import('./components/news/createNewNews/crea
 const ShowAllNews = React.lazy(() => import('./components/news/showAllNews/showAllNews'))
 const CourseInfoById = React.lazy(() => import('./components/courses/courseInfoById/courseInfoById'))
 const NewsInfoById = React.lazy(() => import('./components/news/newsInfoById/newsInfoById'))
+const UpdateNewsById = React.lazy(() => import('./components/news/updateNewsById/updateNewsById'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -21,6 +22,7 @@ const routes = [
   { path: '/all-news', name: 'all-news', component: ShowAllNews },
   { path: '/course-info/:id', name: 'course-info', component: CourseInfoById },
   { path: '/news-info/:id', name: 'news-info', component: NewsInfoById },
+  { path: '/update-news/:id', name: 'update-news', component: UpdateNewsById },
 ]
 
 export default routes

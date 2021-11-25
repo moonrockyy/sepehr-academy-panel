@@ -57,8 +57,8 @@ const NewsInfoById = () => {
       <div className="card mb-3 main">
         <img src={newsByIdData.image} className="card-img-top" alt="..."/>
         <div className="card-body">
-          <h5 className="card-title">{newsByIdData.title}</h5>
-          <p className="card-text">{newsByIdData.text} </p>
+          <h5 className="card-title-news">{newsByIdData.title}</h5>
+          <p className="card-text-news">{newsByIdData.text} </p>
           <div className={"row"}>
             <p className="card-text"><small className="text-muted">نوشته شده در تاریخ 1400/07/19</small></p>
             <div className={"col-4"}>

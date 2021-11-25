@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import LoginButton from '../LoginButton/LoginButton'
 import { useHistory } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
 import eyeImg from '../../../assets/images/eyeicon.png'
 import LoginUser from '../../../core/services/api/Login.api'
 import '../Login.css'
@@ -52,7 +51,6 @@ const LoginForm = () => {
   const [passwordShown, setPasswordShown] = useState(true)
   return (
     <>
-      <ToastContainer position="top-center" limit={1} autoClose={2500} rtl={true} />
       <form onSubmit={formik.handleSubmit} className="mt-4">
         <div className="mb-3">
           <input

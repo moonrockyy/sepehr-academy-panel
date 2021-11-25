@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { getItem } from '../../core/services/storage/storage'
+import GetEmployeeDetail from '../../core/services/api/GetEmployeeDetail.api'
+import jwt_decode from 'jwt-decode'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   CContainer,
@@ -13,14 +16,26 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from '@coreui/icons'
-
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header'
 import { logo } from 'src/assets/brand/logo'
 
 const AppHeader = () => {
+  const [adName, setAdName] = useState('')
+  const doInfo = async () => {
+    const adminDetail = await GetEmployeeDetail()
+    setAdName(adminDetail.result.fullName)
+  }
+
+  useEffect(() => {
+    doInfo()
+  })
+
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
+  const token = getItem('token')
+  const name = jwt_decode(token)
+  console.log(name)
 
   return (
     <CHeader position="sticky" className="mb-4 admin-header">
@@ -35,7 +50,20 @@ const AppHeader = () => {
           <CIcon icon={logo} height={48} alt="Logo" />
         </CHeaderBrand>
         <CHeaderNav className="d-none d-md-flex ms-auto">
-          <CNavItem>
+          {getItem('token') && (
+            <CNavItem>
+              <CNavLink
+                className={'admin-nav-link'}
+                to="/dashboard"
+                component={NavLink}
+                activeClassName="active-admin-header"
+              >
+                {`${adName} خوش آمدید`}
+              </CNavLink>
+            </CNavItem>
+          )}
+
+          {/* <CNavItem>
             <CNavLink
               className={'admin-nav-link'}
               to="/dashboard"
@@ -44,17 +72,17 @@ const AppHeader = () => {
             >
               پنل ادمین
             </CNavLink>
-          </CNavItem>
-          <CNavItem>
+          </CNavItem> */}
+          {/* <CNavItem>
             <CNavLink className={'admin-nav-link'} href="#">
               کاربرها
             </CNavLink>
-          </CNavItem>
-          <CNavItem>
+          </CNavItem> */}
+          {/* <CNavItem>
             <CNavLink className={'admin-nav-link'} href="#">
               تنظیمات
             </CNavLink>
-          </CNavItem>
+          </CNavItem> */}
         </CHeaderNav>
         <CHeaderNav>
           <CNavItem>

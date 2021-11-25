@@ -8,6 +8,7 @@ import '../Register.css'
 import RegisterUser from '../../../core/services/api/Register.api'
 
 const RegisterForm = () => {
+  const [rolePlay, setRolePlay] = useState('')
   const initialValues = {
     fullName: '',
     password: '',
@@ -16,7 +17,7 @@ const RegisterForm = () => {
     birthDate: '',
     nationalId: '',
     address: '',
-    role:"teacher"
+    role: rolePlay,
   }
 
   const history = useHistory()
@@ -30,7 +31,7 @@ const RegisterForm = () => {
       birthDate: values.birthDate,
       nationalId: values.nationalId,
       address: values.address,
-      role: values.role,
+      role: rolePlay,
     }
     await RegisterUser(userRegister)
     // setTimeout(() => {
@@ -227,11 +228,37 @@ const RegisterForm = () => {
           </div>
         </div>
 
-        <div className="mb-3">
-          <select className="form-select form-control form-select-sm">
-            <option selected value={formik.values.role}>ادمین</option>
-            <option value={formik.values.role}>معلم</option>
-          </select>
+        <div className="mb-3 d-flex justify-content-evenly">
+          <div className="form-check">
+            <input
+              onClick={() => setRolePlay('teacher')}
+              className="form-check-input"
+              type="radio"
+              name="log"
+              id="teacher"
+              onChange={formik.handleChange}
+              value={formik.values.role}
+            />
+            <label className="form-check-label tx-color" htmlFor="teacher">
+              معلم
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              onClick={() => {
+                setRolePlay('admin')
+              }}
+              className="form-check-input"
+              type="radio"
+              name="log"
+              id="admin"
+              onChange={formik.handleChange}
+              value={formik.values.role}
+            />
+            <label className="form-check-label tx-color" htmlFor="admin">
+              ادمین
+            </label>
+          </div>
         </div>
 
         <div className="d-flex justify-content-center">

@@ -2,6 +2,11 @@ import React, {useEffect, useState} from 'react';
 import GetAllCourses from "../../../core/services/api/getAllCourses.api";
 import "./showAllCourses.css";
 import {Link} from "react-router-dom";
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+
 
 const ShowAllCourses = () => {
   const [allCoursesData, setAllCoursesData] = useState([]);
@@ -45,9 +50,18 @@ const ShowAllCourses = () => {
                 <img className={"course-img"} src={item[1].image} alt=""/>
               </td>
               <td className={"course-td-btn"}>
-                <Link to={`/course-info/${item[1]._id}`}>
-                  <button className={"btn btn-outline-danger btn-sm "}> حذف </button>
-                </Link>
+                <Tooltip title="edit">
+                  <IconButton>
+                    <ModeEditTwoToneIcon className={"edit-color"}/>
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Delete">
+                  <Link to={`/course-info/${item[1]._id}`}>
+                    <IconButton>
+                      <DeleteTwoToneIcon className={"delete-color"}/>
+                    </IconButton>
+                  </Link>
+                </Tooltip>
               </td>
             </tr>
           )}

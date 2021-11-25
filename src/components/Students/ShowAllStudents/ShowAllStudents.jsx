@@ -13,6 +13,11 @@ const ShowAllStudents = () => {
   useEffect(() => {
     getStudents()
   }, [])
+
+  const handleDelete = async (student) => {
+    const filterData = allStudentsData.filter((st) => student._id !== st._id)
+    setAllStudentsData(filterData)
+  }
   return (
     <>
       <>
@@ -43,7 +48,12 @@ const ShowAllStudents = () => {
                   </td>
 
                   <td scope="row" className={'course-th-items'}>
-                    <button className="btn btn-outline-danger btn-sm">حذف</button>
+                    <button
+                      onClick={() => handleDelete(student)}
+                      className="btn btn-outline-danger btn-sm"
+                    >
+                      حذف
+                    </button>
                   </td>
                 </tr>
               ))}

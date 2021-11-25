@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useParams} from "react-router-dom";
-import GetCourseById from "../../../core/services/api/getCourseById.api"
+import GetCourseById from "../../../core/services/api/courses/getCourseById.api"
 import "./courseInfoById.css"
 import lineImage from "../../../assets/images/Component 8 – 1.png"
-import DeleteCourseById from "../../../core/services/api/deleteCourseById.api";
+import DeleteCourseById from "../../../core/services/api/courses/deleteCourseById.api";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";

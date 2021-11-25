@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {Link, useParams} from "react-router-dom";
 import GetNewsById from "../../../core/services/api/news/getNewsById.api";
 import "./newInfoById.css"
-import "../../courses/courseInfoById/courseInfoById.css"
 import DeleteNewsById from "../../../core/services/api/news/deleteNewsById.api";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";

@@ -44,3 +44,94 @@
   height: 100%;
   margin: 10px auto;
 }
+
+.card-title {
+  color: #323E73;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.card-title:hover {
+  color: #23A455;
+}
+
+/*card-maghalat title hover*/
+
+.card-title::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #23A455;
+  transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-title:hover::before {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
+
+
+.card {
+  border: none;
+  box-shadow: 2px 3px 8px #E1F7ED;
+  cursor: pointer;
+}
+
+.card-user-image {
+  width: 16px;
+  cursor: pointer;
+
+}
+
+.course-teacher {
+  font-size: 15px;
+  color: #323E73;
+  opacity: 70%;
+  cursor: pointer;
+}
+
+.card-line {
+  width: 100%;
+  opacity: 40%;
+  margin-top: 16px;
+}
+
+.card-end {
+  margin-top: 16px;
+}
+
+.card-stopwatch {
+  width: 16px;
+  cursor: pointer;
+}
+
+.card-time {
+  color: #323E73;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 80%;
+}
+
+.card-price {
+
+  color: #23A455;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  right: -12px;
+}
+
+.decoration-none {
+  text-decoration: none;
+}
+.btn-delete-position{
+  position: relative !important;
+  right: -75px !important;
+}
+

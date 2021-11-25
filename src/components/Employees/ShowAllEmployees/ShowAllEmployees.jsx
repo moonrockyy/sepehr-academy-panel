@@ -29,7 +29,8 @@ const ShowAlladmins = () => {
               <th scope="col">نام کاربر</th>
               <th scope="col">ایمیل</th>
               <th scope="col">شماره موبایل</th>
-              <th></th>
+              <th>تغییر</th>
+              <th>تنظیمات</th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +44,15 @@ const ShowAlladmins = () => {
                 </td>
                 <td scope="row" className={'course-th-items'}>
                   {admin.phoneNumber}
+                </td>
+
+                <td scope="row" className={'course-th-items'}>
+                  <button
+                    onClick={() => handleDelete(admin)}
+                    className="btn btn-outline-primary btn-sm"
+                  >
+                    ویرایش
+                  </button>
                 </td>
 
                 <td scope="row" className={'course-th-items'}>

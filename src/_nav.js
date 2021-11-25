@@ -55,7 +55,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'نمایش همه دوره ها',
-        to: '/all-courses'
+        to: '/all-courses',
       },
       {
         component: CNavItem,
@@ -233,23 +233,8 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: 'دانشجویان',
-        to: '/notifications/alerts',
-      },
-      {
-        component: CNavItem,
-        name: 'دانشجویان',
-        to: '/notifications/badges',
-      },
-      {
-        component: CNavItem,
-        name: 'دانشجویان',
-        to: '/notifications/modals',
-      },
-      {
-        component: CNavItem,
-        name: 'دانشجویان',
-        to: '/notifications/toasts',
+        name: 'نمایش تمامی دانشجویان',
+        to: '/all-students',
       },
     ],
   },

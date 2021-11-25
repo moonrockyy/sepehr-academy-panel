@@ -1,6 +1,4 @@
 import React from 'react'
-import Login from 'src/components/Login/Login'
-import Register from 'src/components/Register/Register'
 import { AppContent, AppSidebar, AppFooter, AppHeader } from '../components/ADMIN-panel'
 import { getItem } from '../core/services/storage/storage'
 

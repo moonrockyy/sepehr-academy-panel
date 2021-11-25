@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import {
   CAvatar,
   CBadge,
@@ -23,8 +24,10 @@ import {
 import CIcon from '@coreui/icons-react'
 
 import avatar8 from '../../../assets/images/avatars/img4.png'
+import { clearStorage } from 'src/core/services/storage/storage'
 
 const AppHeaderDropdown = () => {
+  const history = useHistory()
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
@@ -85,7 +88,14 @@ const AppHeaderDropdown = () => {
         {/*</CDropdownItem>*/}
         <CDropdownDivider />
         <CDropdownItem href="#">
-          <CIcon icon={cilLockLocked} className="ms-2" />
+          <CIcon
+            onClick={() => {
+              clearStorage()
+              history.push('/')
+            }}
+            icon={cilLockLocked}
+            className="ms-2"
+          />
           خروج
         </CDropdownItem>
       </CDropdownMenu>

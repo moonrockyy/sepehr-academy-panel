@@ -1,21 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import "../../searchBox/serachbox.css"
-import "./createNewCourse.css"
+import "./createNewNews.css"
 import {useFormik} from "formik";
-import {toast, ToastContainer} from "react-toastify";
+import {ToastContainer} from "react-toastify";
 import cloud from "../../../assets/images/cloud-computing.png"
 import PostImage from "../../../core/services/api/postImage.api";
-import CreateCourse from "../../../core/services/api/createCourse.api";
+import Alert from '@mui/material/Alert';
+import CreateNews from "../../../core/services/api/createNews.api";
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Alert from "@mui/material/Alert";
 
-const CreateNewCourse = () => {
+const CreateNewNews = () => {
   const [selectedFile, setSelectedFile] = useState()
   const [open, setOpen] = useState(false)
   const [imageAddress, setImageAddress] = useState("")
-  const [courseGetData, setCourseGetData] = useState(null)
+  const [newsGetData, setNewsGetData] = useState(null)
   const [preview, setPreview] = useState()
 
   useEffect(() => {
@@ -39,10 +39,10 @@ const CreateNewCourse = () => {
     setSelectedFile(e.target.files[0])
   }
   const initialValues = {
-    courseName: "",
-    topics: [],
-    description: "",
+    title: "",
+    category: "",
     image: imageAddress,
+    text: "",
   };
 
   const handleClick = async () => {
@@ -55,7 +55,6 @@ const CreateNewCourse = () => {
       console.log(err)
     }
   }
-
   const handleSnackBar = () => {
     setOpen(true);
   };
@@ -63,6 +62,7 @@ const CreateNewCourse = () => {
     if (reason === 'clickaway') {
       return;
     }
+
     setOpen(false);
   };
 
@@ -80,32 +80,32 @@ const CreateNewCourse = () => {
   );
 
   const onSubmit = async (values) => {
-    const coursePostData = {
-      courseName: values.courseName,
-      topics:  [values.topics],
-      description: values.description,
+    const newsPostData = {
+      title: values.title,
+      category: values.category,
       image: imageAddress,
+      text: values.text,
     };
-    const result = await CreateCourse(coursePostData);
-    console.log(coursePostData)
+    const result = await CreateNews(newsPostData);
+    console.log(newsPostData)
     console.log(result);
-    setCourseGetData(result.data.message[0].message)
+    setNewsGetData(result.data.message[0].message)
     // toast.success(result.data.message[0].message);
   }
 
   const validate = (values) => {
     let errors = {};
 
-    if (!values.courseName) {
-      errors.courseName = "عنوان دوره را وارد کنید";
+    if (!values.title) {
+      errors.title = "عنوان مقاله را وارد کنید";
     }
 
-    if (!values.topics) {
-      errors.topics = " موضوع دوره را وارد کنید ";
+    if (!values.category) {
+      errors.category = " دسته بندی مقاله را وارد کنید ";
     }
 
-    if (!values.description) {
-      errors.description = "توضیحات دوره را وارد کنید";
+    if (!values.text) {
+      errors.text = "توضیحات مقاله را وارد کنید";
     }
     return errors;
   };
@@ -130,60 +130,60 @@ const CreateNewCourse = () => {
           <form onSubmit={formik.handleSubmit}>
             <div className={"row mb-5 mt-3"}>
                <span className="panel-title">
-                  {"ساخت یک دوره جدید"}
+                  {"ساخت یک مقاله جدید"}
               </span>
             </div>
             <div className="row mb-4 pt-4">
               <div className="col pt-2">
                 <input className="form-control me-2 Search-box" type="text"
-                       placeholder={"عنوان دوره"}
-                       aria-label="courseName"
-                       id={"courseName"}
-                       name="courseName"
+                       placeholder={"عنوان مقاله"}
+                       aria-label="title"
+                       id={"title"}
+                       name="title"
                        onChange={formik.handleChange}
-                       value={formik.values.courseName}
+                       value={formik.values.title}
                        onBlur={formik.handleBlur}
                        autoComplete="off"
                 />
                 <div className="text-danger mt-1 pe-2">
-                  {formik.touched.courseName && formik.errors.courseName ? (
-                    <div>{formik.errors.courseName}</div>
+                  {formik.touched.title && formik.errors.title ? (
+                    <div>{formik.errors.title}</div>
                   ) : null}
                 </div>
               </div>
               <div className="col pt-2">
                 <input className="form-control me-2 Search-box" type="text"
-                       placeholder={"موضوع دوره"}
-                       aria-label="courseTopics"
-                       id={"courseTopics"}
-                       name="topics"
+                       placeholder={"دسته بندی مقاله"}
+                       aria-label="category"
+                       id={"category"}
+                       name="category"
                        onChange={formik.handleChange}
-                       value={formik.values.topics}
+                       value={formik.values.category}
                        onBlur={formik.handleBlur}
                        autoComplete="off"
                 />
                 <div className="text-danger mt-1 pe-2">
-                  {formik.touched.topics && formik.errors.topics ? (
-                    <div>{formik.errors.topics}</div>
+                  {formik.touched.category && formik.errors.category ? (
+                    <div>{formik.errors.category}</div>
                   ) : null}
                 </div>
               </div>
             </div>
             <div className="row mb-4">
               <div className="mb-3">
-                <label htmlFor="exampleFormControlTextarea1" className="form-label"/>
-                <textarea className="form-control text-aria" id="exampleFormControlTextarea1" rows="3"
-                          placeholder={"توضیحات دوره"}
-                          aria-label="courseDescription"
-                          name="description"
+                <label htmlFor="exampleFormControlTextarea2" className="form-label"/>
+                <textarea className="form-control text-aria" id="exampleFormControlTextarea2" rows="3"
+                          placeholder={"توضیحات مقاله"}
+                          aria-label="text"
+                          name="text"
                           onChange={formik.handleChange}
-                          value={formik.values.description}
+                          value={formik.values.text}
                           onBlur={formik.handleBlur}
                           autoComplete="off"
                 />
                 <div className="text-danger mt-1 pe-2">
-                  {formik.touched.description && formik.errors.description ? (
-                    <div>{formik.errors.description}</div>
+                  {formik.touched.text && formik.errors.text ? (
+                    <div>{formik.errors.text}</div>
                   ) : null}
                 </div>
               </div>
@@ -212,9 +212,9 @@ const CreateNewCourse = () => {
               <div className={"d-flex justify-content-center"}>
                 <div>
                   <button onClick={handleSnackBar} className={" btn-green btn btn-hover"} type={"submit"}>ثبت</button>
-                  {courseGetData && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                  {newsGetData && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                     <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                      {courseGetData}
+                      {newsGetData}
                     </Alert>
                   </Snackbar>}
                 </div>
@@ -229,4 +229,4 @@ const CreateNewCourse = () => {
   );
 };
 
-export default CreateNewCourse;
+export default CreateNewNews;

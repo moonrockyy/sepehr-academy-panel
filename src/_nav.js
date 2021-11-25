@@ -55,7 +55,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'نمایش همه دوره ها',
-        to: '/base/accordion',
+        to: '/all-courses'
       },
       {
         component: CNavItem,
@@ -65,7 +65,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'حذف دوره',
-        to: '/base/cards',
+        to: '/all-courses',
       },
       {
         component: CNavItem,
@@ -150,12 +150,12 @@ const _nav = [
       {
         component: CNavItem,
         name: 'نمایش همه مقالات',
-        to: '/forms/form-control',
+        to: '/all-news',
       },
       {
         component: CNavItem,
         name: 'اضافه کردن مقاله جدید',
-        to: '/forms/select',
+        to: '/create-news',
       },
       {
         component: CNavItem,

@@ -17,6 +17,10 @@ const ShowAllTerms = () => {
   console.log(allTermsData)
   return (
     <>
+      <div className={"mainDiv container mt-4 mb-5"}>
+
+        <h4>{"همه ی ترم ها"} </h4>
+      </div>
       <table className="table panel-table table-borderless ">
         <thead className={"thead-color"}>
         <tr className={"tr-color"}>

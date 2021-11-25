@@ -156,12 +156,12 @@ const _nav = [
       {
         component: CNavItem,
         name: 'حذف مقاله',
-        to: '/forms/checks-radios',
+        to: '/all-news',
       },
       {
         component: CNavItem,
         name: 'بروزرسانی مقاله',
-        to: '/forms/range',
+        to: '/all-news',
       },
       // {
       //   component: CNavItem,

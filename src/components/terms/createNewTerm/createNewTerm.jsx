@@ -4,7 +4,7 @@ import "../../searchBox/serachbox.css"
 import PanelTitle from "../../panel-title/panelTitle";
 import { useFormik } from "formik";
 import { ToastContainer } from "react-toastify";
-import CreateTerm from "../../../core/services/api/createTerm.api";
+import CreateTerm from "../../../core/services/api/terms/createTerm.api";
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';

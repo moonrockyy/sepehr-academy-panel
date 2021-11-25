@@ -59,3 +59,15 @@ h4{
   position: relative;
   top: 14px;
 }
+.delete-color{
+  color: #d00000;
+}
+.edit-color{
+  color: #1976d2;
+}
+.news-btn-icons{
+  position: relative;
+  top: 17px;
+  right: -7px;
+  opacity: 95%;
+}

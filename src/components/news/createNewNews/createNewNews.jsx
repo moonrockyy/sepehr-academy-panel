@@ -4,9 +4,9 @@ import "./createNewNews.css"
 import {useFormik} from "formik";
 import {ToastContainer} from "react-toastify";
 import cloud from "../../../assets/images/cloud-computing.png"
-import PostImage from "../../../core/services/api/postImage.api";
+import PostImage from "../../../core/services/api/uploadImg/postImage.api";
 import Alert from '@mui/material/Alert';
-import CreateNews from "../../../core/services/api/createNews.api";
+import CreateNews from "../../../core/services/api/news/createNews.api";
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';

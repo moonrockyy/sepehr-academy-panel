@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import GetAllCourses from "../../../core/services/api/getAllCourses.api";
+import GetAllCourses from "../../../core/services/api/courses/getAllCourses.api";
 import "./showAllCourses.css";
 import {Link} from "react-router-dom";
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';

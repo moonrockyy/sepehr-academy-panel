@@ -84,3 +84,7 @@
 .decoration-none {
   text-decoration: none;
 }
+.btn-delete-position{
+  position: relative !important;
+  right: -75px !important;
+}

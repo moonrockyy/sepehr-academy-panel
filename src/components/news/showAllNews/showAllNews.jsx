@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import "./showAllNews.css"
-import GetAllNews from "../../../core/services/api/getAllNews.api";
+import GetAllNews from "../../../core/services/api/news/getAllNews.api";
 import {Link} from "react-router-dom";
 import ModeEditTwoToneIcon from "@mui/icons-material/ModeEditTwoTone";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";

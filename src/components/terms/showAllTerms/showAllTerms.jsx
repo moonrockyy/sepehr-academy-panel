@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import GetAllTerms from "../../../core/services/api/getAllTerms.api";
+import GetAllTerms from "../../../core/services/api/terms/getAllTerms.api";
 import "./showAllTerms.css"
 import {FaUsers} from "react-icons/all";
 

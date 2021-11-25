@@ -160,7 +160,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'حذف مقاله',
-        to: '/forms/checks-radios',
+        to: '/all-news',
       },
       {
         component: CNavItem,

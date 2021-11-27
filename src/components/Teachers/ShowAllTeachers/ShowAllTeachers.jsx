@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import GetAllTeachers from '../../../core/services/api/GetAllTeachers.api'
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone'
+import IconButton from '@mui/material/IconButton'
 import './showAllTeachers.css'
 
 const ShowAlladmins = () => {
@@ -13,10 +15,6 @@ const ShowAlladmins = () => {
     getTeachers()
   }, [])
 
-  const handleDelete = async (admin) => {
-    const filterData = allTeachersData.filter((st) => admin._id !== st._id)
-    setAllTeachersData(filterData)
-  }
   return (
     <>
       <div className="course-body mt-4">
@@ -46,12 +44,9 @@ const ShowAlladmins = () => {
                 </td>
 
                 <td scope="row" className={'course-th-items'}>
-                  <button
-                    onClick={() => handleDelete(admin)}
-                    className="btn btn-outline-danger btn-sm"
-                  >
-                    حذف
-                  </button>
+                  <IconButton>
+                    <DeleteTwoToneIcon className={'delete-color'} />
+                  </IconButton>
                 </td>
               </tr>
             ))}

@@ -34,7 +34,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'مشاهده اطلاعات',
-        to: '/info',
+        to: '/employee-info/',
       },
       {
         component: CNavItem,
@@ -89,6 +89,11 @@ const _nav = [
         component: CNavItem,
         name: 'بروزرسانی دوره',
         to: '/base/carousels',
+      },
+      {
+        component: CNavItem,
+        name: 'نظرات',
+        to: '/comments',
       },
       // {
       //   component: CNavItem,

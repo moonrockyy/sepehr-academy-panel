@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const Login = React.lazy(() => import('./components/Login/Login'))
 const Register = React.lazy(() => import('./components/Register/Register'))
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
@@ -28,6 +29,9 @@ const ShowAllTeachers = React.lazy(() =>
   import('./components/Teachers/ShowAllTeachers/ShowAllTeachers'),
 )
 
+const EmployeeInfo = React.lazy(() => import('./components/Employees/EmployeeInfo/EmployeeInfo'))
+const Comments = React.lazy(() => import('./components/Comments/ShowAllComments/ShowAllComments'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/login', name: 'Login', component: Login },
@@ -43,6 +47,8 @@ const routes = [
   { path: '/all-students', name: 'all-students', component: ShowAllStudents },
   { path: '/all-employees', name: 'all-employees', component: ShowAllEmployees },
   { path: '/all-teachers', name: 'all-teachers', component: ShowAllTeachers },
+  { path: '/employee-info/:id', name: 'employee-info', component: EmployeeInfo },
+  { path: '/comments', name: 'comments', component: Comments },
 ]
 
 export default routes

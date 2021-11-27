@@ -28,7 +28,7 @@ const AppHeader = () => {
 
   useEffect(() => {
     doInfo()
-  },[])
+  }, [adName])
 
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
@@ -50,7 +50,7 @@ const AppHeader = () => {
             <CNavItem>
               <CNavLink
                 className={'admin-nav-link'}
-                to="/dashboard"
+                to="/login"
                 component={NavLink}
                 activeClassName="active-admin-header"
               >

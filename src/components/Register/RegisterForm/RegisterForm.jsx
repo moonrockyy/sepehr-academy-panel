@@ -33,12 +33,12 @@ const RegisterForm = () => {
       address: values.address,
       role: rolePlay,
     }
-    await RegisterUser(userRegister)
-    // setTimeout(() => {
-    //   {
-    //     result && history.push('/login')
-    //   }
-    // }, 3000)
+    const result = await RegisterUser(userRegister)
+    setTimeout(() => {
+      {
+        result && history.push('/login')
+      }
+    }, 3000)
   }
 
   const validate = (values) => {

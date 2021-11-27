@@ -20,12 +20,12 @@ const LoginForm = () => {
       password: values.password,
     }
 
-    await LoginUser(userLogin)
-    // setTimeout(() => {
-    //   {
-    //     result && history.push('/')
-    //   }
-    // }, 2500)
+    const result = await LoginUser(userLogin)
+    setTimeout(() => {
+      {
+        result && history.push('/')
+      }
+    }, 2500)
   }
 
   const validate = (values) => {

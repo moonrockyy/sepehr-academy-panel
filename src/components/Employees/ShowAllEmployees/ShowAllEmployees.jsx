@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import GetAllEmployees from '../../../core/services/api/GetAllEmployees.api'
 import './showAllEmployees.css'
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone'
+import IconButton from '@mui/material/IconButton'
 
 const ShowAlladmins = () => {
   const [allEmployeesData, setAllEmployeesData] = useState([])
@@ -46,12 +48,9 @@ const ShowAlladmins = () => {
                 </td>
 
                 <td scope="row" className={'course-th-items'}>
-                  <button
-                    onClick={() => handleDelete(admin)}
-                    className="btn btn-outline-danger btn-sm"
-                  >
-                    حذف
-                  </button>
+                  <IconButton>
+                    <DeleteTwoToneIcon className={'delete-color'} />
+                  </IconButton>
                 </td>
               </tr>
             ))}

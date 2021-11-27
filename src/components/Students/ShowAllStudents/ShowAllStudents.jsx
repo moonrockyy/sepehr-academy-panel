@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import GetAllStudents from '../../../core/services/api/GetAllStudents'
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone'
+import IconButton from '@mui/material/IconButton'
 import './showAllStudents.css'
 
 const ShowAllStudents = () => {
@@ -21,7 +23,7 @@ const ShowAllStudents = () => {
   return (
     <>
       <div className="course-body mt-4">
-        <div className='mainDiv container mt-4 mb-5'>
+        <div className="mainDiv container mt-4 mb-5">
           <h4>{'همه دانش آموزان'}</h4>
         </div>
         <table className="table panel-table table-borderless ">
@@ -47,12 +49,9 @@ const ShowAllStudents = () => {
                 </td>
 
                 <td scope="row" className={'course-th-items'}>
-                  <button
-                    onClick={() => handleDelete(student)}
-                    className="btn btn-outline-danger btn-sm"
-                  >
-                    حذف
-                  </button>
+                  <IconButton>
+                    <DeleteTwoToneIcon className={'delete-color'} />
+                  </IconButton>
                 </td>
               </tr>
             ))}

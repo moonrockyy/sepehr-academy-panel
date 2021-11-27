@@ -24,7 +24,6 @@ const EmployeeInfo = () => {
   }
 
   const GoToUpdate = () => {
-    clearStorage()
     history.push('/update-info')
   }
 

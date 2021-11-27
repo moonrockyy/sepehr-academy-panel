@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import jwt_decode from 'jwt-decode'
+import { toast } from 'react-toastify'
 import GetAllEmployees from '../../../core/services/api/GetAllEmployees.api'
+import DeleteEmployee from '../../../core/services/api/DeleteEmployee.api'
+import { ToastContainer } from 'react-toastify'
+import { getItem } from '../../../core/services/storage/storage'
 import './showAllEmployees.css'
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone'
 import IconButton from '@mui/material/IconButton'
@@ -11,12 +16,21 @@ const ShowAlladmins = () => {
     const result = await GetAllEmployees()
     setAllEmployeesData(result)
   }
+
+  const DeleteEmployeeById = async () => {
+    const token = getItem('token')
+    const id = jwt_decode(token)._id
+    const result = await DeleteEmployee(id)
+    toast.success(result.message)
+  }
+
   useEffect(() => {
     getEmployees()
   }, [])
-  
+
   return (
     <>
+      <ToastContainer position="top-center" limit={1} autoClose={2000} rtl={true} />
       <div className="course-body mt-4">
         <div className="mainDiv container mt-4 mb-5">
           <h4>{'همه کارکنان'}</h4>
@@ -31,8 +45,8 @@ const ShowAlladmins = () => {
             </tr>
           </thead>
           <tbody>
-            {allEmployeesData.map((admin) => (
-              <tr key={admin._id} className={'green-hover'}>
+            {allEmployeesData.map((admin, index) => (
+              <tr key={index} className={'green-hover'}>
                 <td scope="row" className={'course-td-items-topics'}>
                   {admin.fullName}
                 </td>
@@ -45,7 +59,10 @@ const ShowAlladmins = () => {
 
                 <td scope="row" className={'course-th-items'}>
                   <IconButton>
-                    <DeleteTwoToneIcon className={'delete-color'} />
+                    <DeleteTwoToneIcon
+                      onClick={() => DeleteEmployeeById()}
+                      className={'delete-color'}
+                    />
                   </IconButton>
                 </td>
               </tr>

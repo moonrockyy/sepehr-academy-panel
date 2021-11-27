@@ -11,6 +11,12 @@ const ShowAlladmins = () => {
     const result = await GetAllTeachers()
     setAllTeachersData(result)
   }
+
+  const handleDelete = async (teacher) => {
+    const filterData = allTeachersData.filter((tch) => teacher._id !== tch._id)
+    setAllTeachersData(filterData)
+  }
+
   useEffect(() => {
     getTeachers()
   }, [])
@@ -31,21 +37,24 @@ const ShowAlladmins = () => {
             </tr>
           </thead>
           <tbody>
-            {allTeachersData.map((admin) => (
-              <tr key={admin._id} className={'green-hover'}>
+            {allTeachersData.map((teacher,index) => (
+              <tr key={index} className={'green-hover'}>
                 <td scope="row" className={'course-td-items-topics'}>
-                  {admin.fullName}
+                  {teacher.fullName}
                 </td>
                 <td scope="row" className={'course-td-items'}>
-                  {admin.email}
+                  {teacher.email}
                 </td>
                 <td scope="row" className={'course-th-items'}>
-                  {admin.phoneNumber}
+                  {teacher.phoneNumber}
                 </td>
 
                 <td scope="row" className={'course-th-items'}>
                   <IconButton>
-                    <DeleteTwoToneIcon className={'delete-color'} />
+                    <DeleteTwoToneIcon
+                      onClick={() => handleDelete(teacher)}
+                      className={'delete-color'}
+                    />
                   </IconButton>
                 </td>
               </tr>

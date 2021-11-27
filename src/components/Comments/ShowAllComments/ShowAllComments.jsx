@@ -10,7 +10,6 @@ import './showAllComments.css'
 
 const ShowAllComments = () => {
   const [allCommentsData, setAllCommentsData] = useState([])
-  console.log(allCommentsData)
 
   const getComments = async () => {
     const result = await GetAllComments()
@@ -19,7 +18,7 @@ const ShowAllComments = () => {
   }
   useEffect(() => {
     getComments()
-  }, [allCommentsData])
+  }, [])
 
   const handleDelete = async (comment) => {
     const filterData = allCommentsData.filter((cm) => comment._id !== cm._id)

@@ -47,7 +47,7 @@ const routes = [
   { path: '/all-students', name: 'all-students', component: ShowAllStudents },
   { path: '/all-employees', name: 'all-employees', component: ShowAllEmployees },
   { path: '/all-teachers', name: 'all-teachers', component: ShowAllTeachers },
-  { path: '/employee-info/:id', name: 'employee-info', component: EmployeeInfo },
+  { path: '/employee-info', name: 'employee-info', component: EmployeeInfo },
   { path: '/comments', name: 'comments', component: Comments },
 ]
 

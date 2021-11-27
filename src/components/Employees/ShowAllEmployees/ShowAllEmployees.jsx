@@ -14,11 +14,7 @@ const ShowAlladmins = () => {
   useEffect(() => {
     getEmployees()
   }, [])
-
-  const handleDelete = async (admin) => {
-    const filterData = allEmployeesData.filter((st) => admin._id !== st._id)
-    setAllEmployeesData(filterData)
-  }
+  
   return (
     <>
       <div className="course-body mt-4">

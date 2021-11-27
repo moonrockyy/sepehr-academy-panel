@@ -1,0 +1,28 @@
+.employee-info {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+  color: #323e73 !important;
+}
+
+.employee-info > .img-container > .info-img {
+  width: 180px;
+  margin-top: 30px;
+  border-radius: 50%;
+}
+
+.edit-btn {
+  background: #323e73 !important;
+  color: #F5E5FC !important;
+}
+
+.exit-btn {
+  background: #e73d36;
+  color: #F5E5FC !important;
+}
+
+
+.exit-btn:hover {
+    background: #e73d36 !important;
+    color: #F5E5FC !important;
+  }

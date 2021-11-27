@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import GetAllStudents from '../../../core/services/api/GetAllStudents'
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone'
 import IconButton from '@mui/material/IconButton'
+import GetAllStudents from '../../../core/services/api/GetAllStudents'
 import './showAllStudents.css'
 
 const ShowAllStudents = () => {

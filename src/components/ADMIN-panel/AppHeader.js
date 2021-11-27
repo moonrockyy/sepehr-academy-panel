@@ -23,7 +23,9 @@ const AppHeader = () => {
   const [adName, setAdName] = useState('')
   const doInfo = async () => {
     const adminDetail = await GetEmployeeDetail()
-    setAdName(adminDetail.result.fullName)
+    {
+      getItem('token') ? setAdName(adminDetail.result.fullName) : setAdName('')
+    }
   }
 
   useEffect(() => {
@@ -45,40 +47,8 @@ const AppHeader = () => {
         <CHeaderBrand className="mx-auto d-md-none" to="/">
           <CIcon icon={logo} height={48} alt="Logo" />
         </CHeaderBrand>
-        <CHeaderNav className="d-none d-md-flex ms-auto">
-          {getItem('token') && (
-            <CNavItem>
-              <CNavLink
-                className={'admin-nav-link'}
-                to="/login"
-                component={NavLink}
-                activeClassName="active-admin-header"
-              >
-                {`${adName} خوش آمدید`}
-              </CNavLink>
-            </CNavItem>
-          )}
-
-          {/* <CNavItem>
-            <CNavLink
-              className={'admin-nav-link'}
-              to="/dashboard"
-              component={NavLink}
-              activeClassName="active-admin-header"
-            >
-              پنل ادمین
-            </CNavLink>
-          </CNavItem> */}
-          {/* <CNavItem>
-            <CNavLink className={'admin-nav-link'} href="#">
-              کاربرها
-            </CNavLink>
-          </CNavItem> */}
-          {/* <CNavItem>
-            <CNavLink className={'admin-nav-link'} href="#">
-              تنظیمات
-            </CNavLink>
-          </CNavItem> */}
+        <CHeaderNav style={{ marginRight: '25px' }} className="d-none d-md-flex ms-auto">
+          {getItem('token') && <CNavItem>{`${adName} خوش آمدید`}</CNavItem>}
         </CHeaderNav>
         <CHeaderNav>
           <CNavItem>
@@ -101,10 +71,6 @@ const AppHeader = () => {
           <AppHeaderDropdown />
         </CHeaderNav>
       </CContainer>
-      {/*<CHeaderDivider />*/}
-      {/*<CContainer fluid>*/}
-      {/*  <AppBreadcrumb />*/}
-      {/*</CContainer>*/}
     </CHeader>
   )
 }

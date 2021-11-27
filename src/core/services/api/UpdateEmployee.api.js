@@ -6,7 +6,7 @@ const MainUrl = process.env.REACT_APP_PUBLIC_PATH
 const UpdateInfo = async (userUpdate, id) => {
   try {
     const result = await axios.put(`${MainUrl}api/employee/${id}`, userUpdate)
-    console.log(result.data.result[0].message)
+    toast.success("آطلاعات شما با موفقیت تغییر یافت")
     return result.data.result
   } catch (error) {
     console.log(error)

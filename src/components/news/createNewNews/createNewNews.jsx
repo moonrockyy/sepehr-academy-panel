@@ -2,20 +2,14 @@ import React, {useEffect, useState} from 'react';
 import "../../searchBox/serachbox.css"
 import "./createNewNews.css"
 import {useFormik} from "formik";
-import {ToastContainer} from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import cloud from "../../../assets/images/cloud-computing.png"
 import PostImage from "../../../core/services/api/uploadImg/postImage.api";
-import Alert from '@mui/material/Alert';
 import CreateNews from "../../../core/services/api/news/createNews.api";
-import Snackbar from '@mui/material/Snackbar';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
 
 const CreateNewNews = () => {
   const [selectedFile, setSelectedFile] = useState()
-  const [open, setOpen] = useState(false)
   const [imageAddress, setImageAddress] = useState("")
-  const [newsGetData, setNewsGetData] = useState(null)
   const [preview, setPreview] = useState()
 
   useEffect(() => {
@@ -55,29 +49,6 @@ const CreateNewNews = () => {
       console.log(err)
     }
   }
-  const handleSnackBar = () => {
-    setOpen(true);
-  };
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  const action = (
-    <React.Fragment>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
-    </React.Fragment>
-  );
 
   const onSubmit = async (values) => {
     const newsPostData = {
@@ -89,8 +60,7 @@ const CreateNewNews = () => {
     const result = await CreateNews(newsPostData);
     console.log(newsPostData)
     console.log(result);
-    setNewsGetData(result.data.message[0].message)
-    // toast.success(result.data.message[0].message);
+    toast.success(result.data.message[0].message);
   }
 
   const validate = (values) => {
@@ -211,12 +181,7 @@ const CreateNewNews = () => {
             <div className={"row mt-4 mb-3 me-2"}>
               <div className={"d-flex justify-content-center"}>
                 <div>
-                  <button onClick={handleSnackBar} className={" btn-green btn btn-hover"} type={"submit"}>ثبت</button>
-                  {newsGetData && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                      {newsGetData}
-                    </Alert>
-                  </Snackbar>}
+                  <button className={" btn-green btn btn-hover"} type={"submit"}>ثبت</button>
                 </div>
                 <button className={" btn-blue btn me-2 mb-3 btn-hover"}> ریست</button>
               </div>

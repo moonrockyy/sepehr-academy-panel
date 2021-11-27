@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {ToastContainer} from "react-toastify";
+import {toast, ToastContainer} from "react-toastify";
 import cloud from "../../../assets/images/cloud-computing.png";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
 import PostImage from "../../../core/services/api/uploadImg/postImage.api";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
 import {useFormik} from "formik";
 import "./updateCourseData.css"
 import UpdateCourse from "../../../core/services/api/courses/updateCourse.api";
@@ -14,9 +10,7 @@ import {useParams} from "react-router-dom";
 const UpdateCourseData = () => {
   const {id} = useParams();
   const [selectedFile, setSelectedFile] = useState()
-  const [open, setOpen] = useState(false)
   const [imageAddress, setImageAddress] = useState("")
-  const [courseGetData, setCourseGetData] = useState(null)
   const [preview, setPreview] = useState()
 
   useEffect(() => {
@@ -57,28 +51,6 @@ const UpdateCourseData = () => {
     }
   }
 
-  const handleSnackBar = () => {
-    setOpen(true);
-  };
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpen(false);
-  };
-
-  const action = (
-    <React.Fragment>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
-    </React.Fragment>
-  );
 
   const onSubmit = async (values) => {
     const courseUpdateData = {
@@ -90,8 +62,7 @@ const UpdateCourseData = () => {
     const result = await UpdateCourse(courseUpdateData,id);
     console.log(courseUpdateData)
     console.log(result);
-    setCourseGetData(result.data.message[0].message)
-    // toast.success(result.data.message[0].message);
+    toast.success(result.data.message[0].message);
   }
 
   const validate = (values) => {
@@ -211,12 +182,7 @@ const UpdateCourseData = () => {
             <div className={"row mt-4 mb-3 me-2"}>
               <div className={"d-flex justify-content-center"}>
                 <div>
-                  <button onClick={handleSnackBar} className={" btn-green btn btn-hover"} type={"submit"}>بروزرسانی</button>
-                  {courseGetData && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                      {courseGetData}
-                    </Alert>
-                  </Snackbar>}
+                  <button className={" btn-green btn btn-hover"} type={"submit"}>بروزرسانی</button>
                 </div>
                 <button className={" btn-blue btn me-2 mb-3 btn-hover"}> ریست</button>
               </div>

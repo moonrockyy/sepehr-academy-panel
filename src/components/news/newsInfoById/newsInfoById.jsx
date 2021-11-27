@@ -3,16 +3,11 @@ import {Link, useParams} from "react-router-dom";
 import GetNewsById from "../../../core/services/api/news/getNewsById.api";
 import "./newInfoById.css"
 import DeleteNewsById from "../../../core/services/api/news/deleteNewsById.api";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
+import {toast, ToastContainer} from "react-toastify";
 
 const NewsInfoById = () => {
   const {id} = useParams();
   const [newsByIdData, setNewsByIdData] = useState([]);
-  const [deleteNewsData, setDeleteNewsData] = useState([]);
-  const [open, setOpen] = useState(false)
 
   const newsById = async () => {
     const result = await GetNewsById(id);
@@ -20,40 +15,24 @@ const NewsInfoById = () => {
   };
   const deleteNewsById = async () => {
     const result = await DeleteNewsById(id)
-    setDeleteNewsData(result.data.message[0].message)
+    console.log(result)
+    toast.success(result.data.message[0].message);
   }
   const handleDeleteNews = () => {
-    setOpen(true);
     deleteNewsById();
   }
   useEffect(() => {
     newsById();
   }, []);
 
-
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  const action = (
-    <React.Fragment>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        <CloseIcon fontSize="small"/>
-      </IconButton>
-    </React.Fragment>
-  );
-  console.log(deleteNewsData)
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        limit={1}
+        autoClose={3000}
+        rtl={true}
+      />
       <div className="card mb-3 main">
         <img src={newsByIdData.image} className="card-img-top" alt="..."/>
         <div className="card-body">
@@ -68,11 +47,6 @@ const NewsInfoById = () => {
             </div>
             <div className={"col-4 btn-delete-position"}>
               <button onClick={handleDeleteNews} className={"btn btn-outline-danger mb-2"}> حذف مقاله</button>
-              {deleteNewsData && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error" sx={{width: '100%'}}>
-                  {deleteNewsData}
-                </Alert>
-              </Snackbar>}
             </div>
             <div className={"d-flex justify-content-end"}>
               <span className="badge bg-primary ">{newsByIdData.category}</span>

@@ -1,0 +1,10 @@
+.panel-title{
+    font-size: 18px;
+    color: #6247AA;
+    position: relative;
+    top: 15px;
+}
+.floating-btn-mr{
+    position: relative;
+    top: -25px;
+}

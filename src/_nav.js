@@ -55,17 +55,17 @@ const _nav = [
       {
         component: CNavItem,
         name: 'نمایش همه دوره ها',
-        to: '/base/accordion',
+        to: '/all-courses'
       },
       {
         component: CNavItem,
         name: 'اضافه کردن دوره جدید',
-        to: '/base/breadcrumbs',
+        to: '/create-course',
       },
       {
         component: CNavItem,
         name: 'حذف دوره',
-        to: '/base/cards',
+        to: '/all-courses',
       },
       {
         component: CNavItem,
@@ -150,22 +150,22 @@ const _nav = [
       {
         component: CNavItem,
         name: 'نمایش همه مقالات',
-        to: '/forms/form-control',
+        to: '/all-news',
       },
       {
         component: CNavItem,
         name: 'اضافه کردن مقاله جدید',
-        to: '/forms/select',
+        to: '/create-news',
       },
       {
         component: CNavItem,
         name: 'حذف مقاله',
-        to: '/forms/checks-radios',
+        to: '/all-news',
       },
       {
         component: CNavItem,
         name: 'بروزرسانی مقاله',
-        to: '/forms/range',
+        to: '/all-news',
       },
       // {
       //   component: CNavItem,
@@ -203,7 +203,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'نمایش همه ترم ها',
-        to: '/icons/coreui-icons',
+        to: '/all-terms',
         // badge: {
         //   color: 'success',
         //   text: 'NEW',
@@ -212,7 +212,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'اضافه کردن  ترم جدید',
-        to: '/icons/flags',
+        to: '/create-term',
       },
       {
         component: CNavItem,

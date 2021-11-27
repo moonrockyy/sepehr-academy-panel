@@ -1,6 +1,10 @@
-import React from 'react'
-import { AppContent, AppSidebar, AppFooter, AppHeader } from '../components/ADMIN-panel'
-import { getItem } from '../core/services/storage/storage'
+import React from "react";
+import {
+  AppContent,
+  AppSidebar,
+  AppFooter,
+  AppHeader,
+} from "../components/ADMIN-panel";
 
 const DefaultLayout = () => {
   return (
@@ -16,7 +20,7 @@ const DefaultLayout = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default DefaultLayout
+export default DefaultLayout;

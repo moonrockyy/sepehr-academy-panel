@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
-import { useFormik } from 'formik'
-import RegisterButton from '../RegisterButton/RegisterButton'
-import { useHistory } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
-import eyeImg from '../../../assets/images/eyeicon.png'
-import '../Register.css'
-import RegisterUser from '../../../core/services/api/Register.api'
+import React, { useState } from "react";
+import { useFormik } from "formik";
+import RegisterButton from "../RegisterButton/RegisterButton";
+import { useHistory } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import eyeImg from "../../../assets/images/eyeicon.png";
+import "../Register.css";
+import RegisterUser from "../../../core/services/api/Register.api";
 
 const RegisterForm = () => {
-  const [rolePlay, setRolePlay] = useState('')
+  const [rolePlay, setRolePlay] = useState("");
   const initialValues = {
-    fullName: '',
-    password: '',
-    email: '',
-    phoneNumber: '',
-    birthDate: '',
-    nationalId: '',
-    address: '',
-    role: rolePlay,
-  }
+    fullName: "",
+    password: "",
+    email: "",
+    phoneNumber: "",
+    birthDate: "",
+    nationalId: "",
+    address: "",
+    role: "admin",
+  };
 
-  const history = useHistory()
+  const history = useHistory();
 
   const onSubmit = async (values) => {
     const userRegister = {
@@ -31,61 +31,66 @@ const RegisterForm = () => {
       birthDate: values.birthDate,
       nationalId: values.nationalId,
       address: values.address,
-      role: rolePlay,
-    }
-    const result = await RegisterUser(userRegister)
+      role: values.role,
+    };
+    const result = await RegisterUser(userRegister);
     setTimeout(() => {
       {
-        result && history.push('/login')
+        result && history.push("/login");
       }
-    }, 3000)
-  }
+    }, 3000);
+  };
 
   const validate = (values) => {
-    let errors = {}
+    let errors = {};
 
     if (!values.fullName) {
-      errors.fullName = 'نام کاربری خود را وارد کنید'
+      errors.fullName = "نام کاربری خود را وارد کنید";
     }
 
     if (!values.password) {
-      errors.password = 'رمز عبور خود را وارد کنید'
+      errors.password = "رمز عبور خود را وارد کنید";
     }
 
     if (!values.email) {
-      errors.email = 'ایمیل خود را وارد کنید'
+      errors.email = "ایمیل خود را وارد کنید";
     }
 
     if (!values.phoneNumber) {
-      errors.phoneNumber = 'شماره تماس خود را وارد کنید'
+      errors.phoneNumber = "شماره تماس خود را وارد کنید";
     }
 
     if (!values.birthDate) {
-      errors.birthDate = 'تاریخ تولد خود را وارد کنید'
+      errors.birthDate = "تاریخ تولد خود را وارد کنید";
     }
 
     if (!values.nationalId) {
-      errors.nationalId = 'کد ملی خود را وارد کنید'
+      errors.nationalId = "کد ملی خود را وارد کنید";
     }
 
     if (!values.address) {
-      errors.address = 'آدرس خود را وارد کنید'
+      errors.address = "آدرس خود را وارد کنید";
     }
 
-    return errors
-  }
+    return errors;
+  };
 
   const formik = useFormik({
     initialValues,
     onSubmit,
     validate,
-  })
+  });
 
-  const [passwordShown, setPasswordShown] = useState(true)
+  const [passwordShown, setPasswordShown] = useState(true);
 
   return (
     <>
-      <ToastContainer position="top-center" limit={1} autoClose={3000} rtl={true} />
+      <ToastContainer
+        position="top-center"
+        limit={1}
+        autoClose={3000}
+        rtl={true}
+      />
       <form onSubmit={formik.handleSubmit} className="mt-1">
         <div className="mb-3">
           <input
@@ -119,13 +124,15 @@ const RegisterForm = () => {
             autoComplete="off"
           />
           <div className="text-danger mt-1">
-            {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+            {formik.touched.email && formik.errors.email ? (
+              <div>{formik.errors.email}</div>
+            ) : null}
           </div>
         </div>
 
         <div className="mb-3 pass-form">
           <input
-            type={passwordShown ? 'password' : 'text'}
+            type={passwordShown ? "password" : "text"}
             className="form-control"
             placeholder="رمز عبور"
             id="password"
@@ -139,7 +146,7 @@ const RegisterForm = () => {
           <div
             className="pass-eye"
             onClick={() => {
-              setPasswordShown(!passwordShown)
+              setPasswordShown(!passwordShown);
             }}
           >
             <img src={eyeImg} />
@@ -228,45 +235,12 @@ const RegisterForm = () => {
           </div>
         </div>
 
-        <div className="mb-3 d-flex justify-content-evenly">
-          <div className="form-check">
-            <input
-              onClick={() => setRolePlay('teacher')}
-              className="form-check-input"
-              type="radio"
-              name="log"
-              id="teacher"
-              onChange={formik.handleChange}
-              value={formik.values.role}
-            />
-            <label className="form-check-label tx-color" htmlFor="teacher">
-              معلم
-            </label>
-          </div>
-          <div className="form-check">
-            <input
-              onClick={() => {
-                setRolePlay('admin')
-              }}
-              className="form-check-input"
-              type="radio"
-              name="log"
-              id="admin"
-              onChange={formik.handleChange}
-              value={formik.values.role}
-            />
-            <label className="form-check-label tx-color" htmlFor="admin">
-              ادمین
-            </label>
-          </div>
-        </div>
-
         <div className="d-flex justify-content-center">
           <RegisterButton />
         </div>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;

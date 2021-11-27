@@ -24,7 +24,6 @@ import {
 import CIcon from '@coreui/icons-react'
 
 import avatar8 from '../../../assets/images/avatars/img4.png'
-import { clearStorage } from '../../../core/services/storage/storage'
 
 const AppHeaderDropdown = () => {
   return (
@@ -67,13 +66,7 @@ const AppHeaderDropdown = () => {
         <CDropdownDivider />
         <Link to="/login">
           <CDropdownItem>
-            <CIcon
-              onClick={() => {
-                clearStorage()
-              }}
-              icon={cilLockLocked}
-              className="ms-2"
-            />
+            <CIcon icon={cilLockLocked} className="ms-2" />
             خروج
           </CDropdownItem>
         </Link>

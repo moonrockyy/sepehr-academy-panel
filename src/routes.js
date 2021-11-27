@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const Login = React.lazy(() => import('./components/Login/Login'))
 const Register = React.lazy(() => import('./components/Register/Register'))
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
@@ -30,6 +29,9 @@ const ShowAllTeachers = React.lazy(() =>
 )
 
 const EmployeeInfo = React.lazy(() => import('./components/Employees/EmployeeInfo/EmployeeInfo'))
+const UpdateEmployee = React.lazy(() =>
+  import('./components/Employees/UpdateEmployee/UpdateEmployee'),
+)
 const Comments = React.lazy(() => import('./components/Comments/ShowAllComments/ShowAllComments'))
 
 const routes = [
@@ -48,6 +50,7 @@ const routes = [
   { path: '/all-employees', name: 'all-employees', component: ShowAllEmployees },
   { path: '/all-teachers', name: 'all-teachers', component: ShowAllTeachers },
   { path: '/employee-info', name: 'employee-info', component: EmployeeInfo },
+  { path: '/update-info', name: 'uptade-info', component: UpdateEmployee },
   { path: '/comments', name: 'comments', component: Comments },
 ]
 

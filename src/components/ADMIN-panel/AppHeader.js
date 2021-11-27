@@ -48,7 +48,7 @@ const AppHeader = () => {
           <CIcon icon={logo} height={48} alt="Logo" />
         </CHeaderBrand>
         <CHeaderNav style={{ marginRight: '25px' }} className="d-none d-md-flex ms-auto">
-          {getItem('token') && <CNavItem>{`${adName} خوش آمدید`}</CNavItem>}
+          {getItem('token') && <CNavItem>{`خوش آمدی ${adName}`}</CNavItem>}
         </CHeaderNav>
         <CHeaderNav>
           <CNavItem>

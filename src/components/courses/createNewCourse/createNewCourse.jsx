@@ -6,16 +6,10 @@ import {toast, ToastContainer} from "react-toastify";
 import cloud from "../../../assets/images/cloud-computing.png"
 import PostImage from "../../../core/services/api/uploadImg/postImage.api";
 import CreateCourse from "../../../core/services/api/courses/createCourse.api";
-import Snackbar from '@mui/material/Snackbar';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import Alert from "@mui/material/Alert";
 
 const CreateNewCourse = () => {
   const [selectedFile, setSelectedFile] = useState()
-  const [open, setOpen] = useState(false)
   const [imageAddress, setImageAddress] = useState("")
-  const [courseGetData, setCourseGetData] = useState(null)
   const [preview, setPreview] = useState()
 
   useEffect(() => {
@@ -56,29 +50,6 @@ const CreateNewCourse = () => {
     }
   }
 
-  const handleSnackBar = () => {
-    setOpen(true);
-  };
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpen(false);
-  };
-
-  const action = (
-    <React.Fragment>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
-    </React.Fragment>
-  );
-
   const onSubmit = async (values) => {
     const coursePostData = {
       courseName: values.courseName,
@@ -89,8 +60,7 @@ const CreateNewCourse = () => {
     const result = await CreateCourse(coursePostData);
     console.log(coursePostData)
     console.log(result);
-    setCourseGetData(result.data.message[0].message)
-    // toast.success(result.data.message[0].message);
+    toast.success(result.data.message[0].message);
   }
 
   const validate = (values) => {
@@ -211,12 +181,7 @@ const CreateNewCourse = () => {
             <div className={"row mt-4 mb-3 me-2"}>
               <div className={"d-flex justify-content-center"}>
                 <div>
-                  <button onClick={handleSnackBar} className={" btn-green btn btn-hover"} type={"submit"}>ثبت</button>
-                  {courseGetData && <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                    <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                      {courseGetData}
-                    </Alert>
-                  </Snackbar>}
+                  <button className={" btn-green btn btn-hover"} type={"submit"}>ثبت</button>
                 </div>
                 <button className={" btn-blue btn me-2 mb-3 btn-hover"}> ریست</button>
               </div>

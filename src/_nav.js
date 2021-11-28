@@ -21,26 +21,44 @@ const _nav = [
     name: 'داشبرد',
     to: '/dashboard',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
-    // badge: {
-    //   color: 'info',
-    //   text: 'NEW',
-    // },
   },
   {
     component: CNavTitle,
     name: 'پروفایل',
   },
   {
-    component: CNavItem,
-    name: 'کاربرها',
-    to: '/theme/colors',
-    icon: <CIcon icon={cilDrop} customClassName="nav-icon" />,
+    component: CNavGroup,
+    name: 'اطلاعات من',
+    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'مشاهده اطلاعات',
+        to: '/employee-info/',
+      },
+      {
+        component: CNavItem,
+        name: 'ویرایش اطلاعات',
+        to: '/update-info',
+      },
+    ],
   },
   {
-    component: CNavItem,
-    name: 'ویرایش',
-    to: '/theme/typography',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    component: CNavGroup,
+    name: 'کاربران',
+    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'نمایش همه ادمین ها',
+        to: '/all-employees',
+      },
+      {
+        component: CNavItem,
+        name: 'نمایش همه معلم ها',
+        to: '/all-teachers',
+      },
+    ],
   },
   {
     component: CNavTitle,
@@ -55,7 +73,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'نمایش همه دوره ها',
-        to: '/all-courses'
+        to: '/all-courses',
       },
       {
         component: CNavItem,
@@ -71,6 +89,11 @@ const _nav = [
         component: CNavItem,
         name: 'بروزرسانی دوره',
         to: '/base/carousels',
+      },
+      {
+        component: CNavItem,
+        name: 'نظرات',
+        to: '/comments',
       },
       // {
       //   component: CNavItem,
@@ -233,23 +256,8 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: 'دانشجویان',
-        to: '/notifications/alerts',
-      },
-      {
-        component: CNavItem,
-        name: 'دانشجویان',
-        to: '/notifications/badges',
-      },
-      {
-        component: CNavItem,
-        name: 'دانشجویان',
-        to: '/notifications/modals',
-      },
-      {
-        component: CNavItem,
-        name: 'دانشجویان',
-        to: '/notifications/toasts',
+        name: 'نمایش تمامی دانشجویان',
+        to: '/all-students',
       },
     ],
   },

@@ -46,3 +46,9 @@
   margin-left: 6px;
   border-radius: 2px;
 }
+.delete-color{
+  color: #d00000;
+}
+.edit-color{
+  color: #1976d2;
+}

@@ -54,6 +54,9 @@ const UpdateEmployee = React.lazy(() =>
 const Comments = React.lazy(() =>
   import("./components/Comments/ShowAllComments/ShowAllComments")
 );
+const TermsInfoById = React.lazy(() =>
+  import("./components/terms/termsInfoById/termsInfoById")
+);
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
@@ -68,6 +71,7 @@ const routes = [
   { path: "/all-news", name: "all-news", component: ShowAllNews },
   { path: "/course-info/:id", name: "course-info", component: CourseInfoById },
   { path: "/news-info/:id", name: "news-info", component: NewsInfoById },
+  { path: "/terms-info/:id", name: "terms-info", component: TermsInfoById },
   { path: "/update-news/:id", name: "update-news", component: UpdateNewsById },
   {
     path: "/update-course/:id",

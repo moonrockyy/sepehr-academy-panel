@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import GetAllTerms from "../../../core/services/api/terms/getAllTerms.api";
 import "./showAllTerms.css"
 import {FaUsers} from "react-icons/all";
+import {Link} from "react-router-dom";
 
 const ShowAllTerms = () => {
   const [allTermsData, setAllTermsData] = useState([]);
@@ -35,8 +36,10 @@ const ShowAllTerms = () => {
         </tr>
         </thead>
         <tbody>
-        {Object.entries(allTermsData).map(item => <tr key={item._id} className={"green-hover"}>
-          <th scope="row" className={"panel-th-items"}>{item[1].title}</th>
+        {Object.entries(allTermsData).map(item => <tr key={item[1]._id} className={"green-hover"}>
+          <Link to={`terms-info/${item[1]._id}`}>
+            <th scope="row" className={"panel-th-items"}>{item[1].title}</th>
+          </Link>
           <td className={"panel-td-items"}>{item[1].course.topics[1]} </td>
           <td className={"panel-td-items"}>
             <img className={"table-course-img"} src={item[1].course.image} alt=""/>

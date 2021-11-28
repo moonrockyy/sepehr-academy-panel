@@ -50,20 +50,25 @@ const ShowAllCourses = () => {
                 <img className={"course-img"} src={item[1].image} alt=""/>
               </td>
               <td className={"course-td-btn"}>
-                <Tooltip title="edit">
-                  <Link to={`/update-course/${item[1]._id}`}>
-                    <IconButton>
-                      <ModeEditTwoToneIcon className={"edit-color"}/>
-                    </IconButton>
-                  </Link>
-                </Tooltip>
-                <Tooltip title="Delete">
-                  <Link to={`/course-info/${item[1]._id}`}>
-                    <IconButton>
-                      <DeleteTwoToneIcon className={"delete-color"}/>
-                    </IconButton>
-                  </Link>
-                </Tooltip>
+                <div className={"row"}>
+                  <div className={"col-4"}>  <Tooltip title="edit">
+                    <Link to={`/update-course/${item[1]._id}`}>
+                      <IconButton>
+                        <ModeEditTwoToneIcon className={"edit-color"}/>
+                      </IconButton>
+                    </Link>
+                  </Tooltip></div>
+                  <div className={"col-3"}>     <Tooltip title="Delete">
+                    <Link to={`/course-info/${item[1]._id}`}>
+                      <IconButton>
+                        <DeleteTwoToneIcon className={"delete-color"}/>
+                      </IconButton>
+                    </Link>
+                  </Tooltip></div>
+
+
+
+                </div>
               </td>
             </tr>
           )}

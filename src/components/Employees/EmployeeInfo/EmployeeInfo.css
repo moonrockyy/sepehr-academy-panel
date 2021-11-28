@@ -5,6 +5,12 @@
   color: #323e73 !important;
 }
 
+.white-background{
+  background-color: #F3FCF8;
+  box-shadow: 0 3px 10px #E1F7ED;
+  border-radius: 10px;
+}
+
 .employee-info > .img-container > .info-img {
   width: 180px;
   margin-top: 30px;

@@ -32,7 +32,7 @@ const EmployeeInfo = () => {
   }, [])
   return (
     <>
-      <div className="employee-info">
+      <div className="employee-info white-background">
         <div className="img-container">
           <img className="info-img" src={Img} />
         </div>

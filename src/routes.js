@@ -24,6 +24,15 @@ const ShowAllNews = React.lazy(() =>
 const CourseInfoById = React.lazy(() =>
   import("./components/courses/courseInfoById/courseInfoById")
 );
+const NewsInfoById = React.lazy(() =>
+  import("./components/news/newsInfoById/newsInfoById")
+);
+const UpdateNewsById = React.lazy(() =>
+  import("./components/news/updateNewsById/updateNewsById")
+);
+const UpdateCourseById = React.lazy(() =>
+  import("./components/courses/updateCourseByid/updateCourseById")
+);
 const ShowAllStudents = React.lazy(() =>
   import("./components/Students/ShowAllStudents/ShowAllStudents")
 );
@@ -57,6 +66,13 @@ const routes = [
   { path: "/create-news", name: "create-news", component: CreateNews },
   { path: "/all-news", name: "all-news", component: ShowAllNews },
   { path: "/course-info/:id", name: "course-info", component: CourseInfoById },
+  { path: "/news-info/:id", name: "news-info", component: NewsInfoById },
+  { path: "/update-news/:id", name: "update-news", component: UpdateNewsById },
+  {
+    path: "/update-course/:id",
+    name: "update-course",
+    component: UpdateCourseById,
+  },
   { path: "/all-students", name: "all-students", component: ShowAllStudents },
   {
     path: "/all-employees",

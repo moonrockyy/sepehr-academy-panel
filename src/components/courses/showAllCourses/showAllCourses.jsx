@@ -51,9 +51,11 @@ const ShowAllCourses = () => {
               </td>
               <td className={"course-td-btn"}>
                 <Tooltip title="edit">
-                  <IconButton>
-                    <ModeEditTwoToneIcon className={"edit-color"}/>
-                  </IconButton>
+                  <Link to={`/update-course/${item[1]._id}`}>
+                    <IconButton>
+                      <ModeEditTwoToneIcon className={"edit-color"}/>
+                    </IconButton>
+                  </Link>
                 </Tooltip>
                 <Tooltip title="Delete">
                   <Link to={`/course-info/${item[1]._id}`}>

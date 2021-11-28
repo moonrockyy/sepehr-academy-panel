@@ -25,14 +25,13 @@ class App extends Component {
             {getItem("token") ? (
               <Route
                 path="/"
-                name="Home"
                 render={(props) => <DefaultLayout {...props} />}
               />
             ) : (
-              <div>
-                <Route path="/" name="Home" render={() => <Login />} />
-                <Route path="/register" name="Home" render={() => <Register />} />
-              </div>
+              <>
+                <Route path="/login" render={() => <Login />} />
+                <Route path="/register" render={() => <Register />} />
+              </>
             )}
           </Switch>
         </React.Suspense>

@@ -7,7 +7,7 @@ import "../../components/Register/Register.css";
 
 const Register = () => {
   return (
-    <div className="container register-container">
+    <div className="container register-container mt-4">
       <div className="row p-1">
         <div className="col-lg-12 col-xl-7 order-xl-last d-flex justify-content-center">
           <RegisterImg />

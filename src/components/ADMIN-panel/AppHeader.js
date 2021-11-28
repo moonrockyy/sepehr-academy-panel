@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { getItem } from '../../core/services/storage/storage'
+import GetEmployeeDetail from '../../core/services/api/GetEmployeeDetail.api'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   CContainer,
@@ -13,12 +15,23 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { cilBell, cilEnvelopeOpen, cilList, cilMenu } from '@coreui/icons'
-
 import { AppBreadcrumb } from './index'
 import { AppHeaderDropdown } from './header'
 import { logo } from 'src/assets/brand/logo'
 
 const AppHeader = () => {
+  const [adName, setAdName] = useState('')
+  const doInfo = async () => {
+    const adminDetail = await GetEmployeeDetail()
+    {
+      getItem('token') ? setAdName(adminDetail.result.fullName) : setAdName('')
+    }
+  }
+
+  useEffect(() => {
+    doInfo()
+  }, [adName])
+
   const dispatch = useDispatch()
   const sidebarShow = useSelector((state) => state.sidebarShow)
 
@@ -34,27 +47,8 @@ const AppHeader = () => {
         <CHeaderBrand className="mx-auto d-md-none" to="/">
           <CIcon icon={logo} height={48} alt="Logo" />
         </CHeaderBrand>
-        <CHeaderNav className="d-none d-md-flex ms-auto">
-          <CNavItem>
-            <CNavLink
-              className={'admin-nav-link'}
-              to="/dashboard"
-              component={NavLink}
-              activeClassName="active-admin-header"
-            >
-              پنل ادمین
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink className={'admin-nav-link'} href="#">
-              کاربرها
-            </CNavLink>
-          </CNavItem>
-          <CNavItem>
-            <CNavLink className={'admin-nav-link'} href="#">
-              تنظیمات
-            </CNavLink>
-          </CNavItem>
+        <CHeaderNav style={{ marginRight: '25px' }} className="d-none d-md-flex ms-auto">
+          {getItem('token') && <CNavItem>{`خوش آمدی ${adName}`}</CNavItem>}
         </CHeaderNav>
         <CHeaderNav>
           <CNavItem>
@@ -77,10 +71,6 @@ const AppHeader = () => {
           <AppHeaderDropdown />
         </CHeaderNav>
       </CContainer>
-      {/*<CHeaderDivider />*/}
-      {/*<CContainer fluid>*/}
-      {/*  <AppBreadcrumb />*/}
-      {/*</CContainer>*/}
     </CHeader>
   )
 }

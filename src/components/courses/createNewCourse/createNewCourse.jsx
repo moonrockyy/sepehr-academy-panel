@@ -94,7 +94,7 @@ const CreateNewCourse = () => {
           <ToastContainer
             position="top-center"
             limit={1}
-            autoClose={3000}
+            autoClose={2000}
             rtl={true}
           />
           <form onSubmit={formik.handleSubmit}>

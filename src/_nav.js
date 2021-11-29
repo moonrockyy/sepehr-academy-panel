@@ -240,12 +240,12 @@ const _nav = [
       {
         component: CNavItem,
         name: 'حذف ترم',
-        to: '/icons/brands',
+        to: '/all-terms',
       },
       {
         component: CNavItem,
         name: 'بروزرسانی ترم',
-        to: '/icons/brands',
+        to: '/all-terms',
       },
     ],
   },

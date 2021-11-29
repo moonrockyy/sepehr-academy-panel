@@ -1,7 +1,7 @@
 import React from 'react';
 import "./panelTitle.css"
 
-const PanelTitle = ({}) => {
+const PanelTitle = ({title}) => {
     return (
         <>
               <span className="panel-title">

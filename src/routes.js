@@ -57,37 +57,41 @@ const Comments = React.lazy(() =>
 const TermsInfoById = React.lazy(() =>
   import("./components/terms/termsInfoById/termsInfoById")
 );
+const UpdateTermById = React.lazy(() =>
+  import("./components/terms/updateTermById/updateTermById")
+);
 
 const routes = [
-  { path: "/", exact: true, name: "Home" },
-  { path: "/login", name: "Login", component: Login },
-  { path: "/register", name: "Register", component: Register },
-  { path: "/dashboard", name: "Dashboard", component: Dashboard },
-  { path: "/create-term", name: "create-term", component: CreateTerm },
-  { path: "/all-terms", name: "all-term", component: ShowAllTerms },
-  { path: "/all-courses", name: "all-courses", component: ShowAllCourses },
-  { path: "/create-course", name: "create-course", component: CreateCourse },
-  { path: "/create-news", name: "create-news", component: CreateNews },
-  { path: "/all-news", name: "all-news", component: ShowAllNews },
-  { path: "/course-info/:id", name: "course-info", component: CourseInfoById },
-  { path: "/news-info/:id", name: "news-info", component: NewsInfoById },
-  { path: "/terms-info/:id", name: "terms-info", component: TermsInfoById },
-  { path: "/update-news/:id", name: "update-news", component: UpdateNewsById },
+  {path: "/", exact: true, name: "Home"},
+  {path: "/login", name: "Login", component: Login},
+  {path: "/register", name: "Register", component: Register},
+  {path: "/dashboard", name: "Dashboard", component: Dashboard},
+  {path: "/create-term", name: "create-term", component: CreateTerm},
+  {path: "/all-terms", name: "all-term", component: ShowAllTerms},
+  {path: "/all-courses", name: "all-courses", component: ShowAllCourses},
+  {path: "/create-course", name: "create-course", component: CreateCourse},
+  {path: "/create-news", name: "create-news", component: CreateNews},
+  {path: "/all-news", name: "all-news", component: ShowAllNews},
+  {path: "/course-info/:id", name: "course-info", component: CourseInfoById},
+  {path: "/news-info/:id", name: "news-info", component: NewsInfoById},
+  {path: "/terms-info/:id", name: "terms-info", component: TermsInfoById},
+  {path: "/update-news/:id", name: "update-news", component: UpdateNewsById},
+  {path: "/update-term/:id", name: "update-term", component: UpdateTermById},
   {
     path: "/update-course/:id",
     name: "update-course",
     component: UpdateCourseById,
   },
-  { path: "/all-students", name: "all-students", component: ShowAllStudents },
+  {path: "/all-students", name: "all-students", component: ShowAllStudents},
   {
     path: "/all-employees",
     name: "all-employees",
     component: ShowAllEmployees,
   },
-  { path: "/all-teachers", name: "all-teachers", component: ShowAllTeachers },
-  { path: "/employee-info", name: "employee-info", component: EmployeeInfo },
-  { path: "/update-info", name: "uptade-info", component: UpdateEmployee },
-  { path: "/comments", name: "comments", component: Comments },
+  {path: "/all-teachers", name: "all-teachers", component: ShowAllTeachers},
+  {path: "/employee-info", name: "employee-info", component: EmployeeInfo},
+  {path: "/update-info", name: "uptade-info", component: UpdateEmployee},
+  {path: "/comments", name: "comments", component: Comments},
 ];
 
 export default routes;

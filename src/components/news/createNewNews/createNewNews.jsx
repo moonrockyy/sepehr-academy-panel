@@ -6,11 +6,13 @@ import {toast, ToastContainer} from "react-toastify";
 import cloud from "../../../assets/images/cloud-computing.png"
 import PostImage from "../../../core/services/api/uploadImg/postImage.api";
 import CreateNews from "../../../core/services/api/news/createNews.api";
+import {useHistory} from "react-router-dom";
 
 const CreateNewNews = () => {
   const [selectedFile, setSelectedFile] = useState()
   const [imageAddress, setImageAddress] = useState("")
   const [preview, setPreview] = useState()
+  const history = useHistory()
 
   useEffect(() => {
     if (!selectedFile) {
@@ -61,6 +63,9 @@ const CreateNewNews = () => {
     console.log(newsPostData)
     console.log(result);
     toast.success(result.data.message[0].message);
+    setTimeout(() => {
+      result && history.push("/all-news")
+    }, 2500)
   }
 
   const validate = (values) => {

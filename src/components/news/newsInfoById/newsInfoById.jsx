@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link, useParams} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 import GetNewsById from "../../../core/services/api/news/getNewsById.api";
 import "./newInfoById.css"
 import DeleteNewsById from "../../../core/services/api/news/deleteNewsById.api";
@@ -8,6 +8,7 @@ import {toast, ToastContainer} from "react-toastify";
 const NewsInfoById = () => {
   const {id} = useParams();
   const [newsByIdData, setNewsByIdData] = useState([]);
+  const history = useHistory()
 
   const newsById = async () => {
     const result = await GetNewsById(id);
@@ -17,6 +18,9 @@ const NewsInfoById = () => {
     const result = await DeleteNewsById(id)
     console.log(result)
     toast.success(result.data.message[0].message);
+    setTimeout(() => {
+      result && history.push("/all-news")
+    }, 2500)
   }
   const handleDeleteNews = () => {
     deleteNewsById();

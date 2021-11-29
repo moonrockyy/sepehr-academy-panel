@@ -3,12 +3,13 @@ import PostImage from "../../../core/services/api/uploadImg/postImage.api";
 import {useFormik} from "formik";
 import {toast, ToastContainer} from "react-toastify";
 import cloud from "../../../assets/images/cloud-computing.png";
-import {useParams} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import UpdateNews from "../../../core/services/api/news/updateNews.api";
 import "../../news/createNewNews/createNewNews.css"
 
 const UpdateNewsData = () => {
   const {id} = useParams();
+  const history = useHistory()
   const [selectedFile, setSelectedFile] = useState()
   const [imageAddress, setImageAddress] = useState("")
   const [preview, setPreview] = useState()
@@ -63,6 +64,9 @@ const UpdateNewsData = () => {
     console.log(newsUpdateData)
     console.log(result);
     toast.success(result.data.message[0].message);
+    setTimeout(() => {
+      result && history.push("/all-news")
+    }, 2500)
   }
 
   const validate = (values) => {

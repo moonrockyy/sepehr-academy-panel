@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link, useParams} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 import "../showAllTerms/showAllTerms.css"
 import {toast, ToastContainer} from "react-toastify";
 import GetTermById from "../../../core/services/api/terms/getTermById.api";
@@ -11,6 +11,7 @@ import DeleteTermById from "../../../core/services/api/terms/deleteTermById.api"
 
 const TermsInfoById = () => {
   const {id} = useParams();
+  const history = useHistory()
 
   const [termByIdData, setTermByIdData] = useState([]);
 
@@ -20,8 +21,11 @@ const TermsInfoById = () => {
   };
   const deleteTermById = async () => {
     const result = await DeleteTermById(id)
-    toast.success(result.data.message[0].message);
     console.log(result);
+    toast.success(result.data.message[0].message);
+    setTimeout(() => {
+      result && history.push("/all-terms")
+    }, 2500)
   }
   const handleDeleteTerm = () => {
     deleteTermById();

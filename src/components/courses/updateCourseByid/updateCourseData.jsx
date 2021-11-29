@@ -5,9 +5,10 @@ import PostImage from "../../../core/services/api/uploadImg/postImage.api";
 import {useFormik} from "formik";
 import "./updateCourseData.css"
 import UpdateCourse from "../../../core/services/api/courses/updateCourse.api";
-import {useParams} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 
 const UpdateCourseData = () => {
+  const history = useHistory()
   const {id} = useParams();
   const [selectedFile, setSelectedFile] = useState()
   const [imageAddress, setImageAddress] = useState("")
@@ -63,6 +64,9 @@ const UpdateCourseData = () => {
     console.log(courseUpdateData)
     console.log(result);
     toast.success(result.data.message[0].message);
+    setTimeout(()=>{
+      result && history.push(`/all-courses`)
+    },2500)
   }
 
   const validate = (values) => {

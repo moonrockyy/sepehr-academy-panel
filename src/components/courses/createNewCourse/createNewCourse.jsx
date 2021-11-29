@@ -6,11 +6,13 @@ import {toast, ToastContainer} from "react-toastify";
 import cloud from "../../../assets/images/cloud-computing.png"
 import PostImage from "../../../core/services/api/uploadImg/postImage.api";
 import CreateCourse from "../../../core/services/api/courses/createCourse.api";
+import {useHistory} from "react-router-dom";
 
 const CreateNewCourse = () => {
   const [selectedFile, setSelectedFile] = useState()
   const [imageAddress, setImageAddress] = useState("")
   const [preview, setPreview] = useState()
+  const history = useHistory()
 
   useEffect(() => {
     if (!selectedFile) {
@@ -53,7 +55,7 @@ const CreateNewCourse = () => {
   const onSubmit = async (values) => {
     const coursePostData = {
       courseName: values.courseName,
-      topics:  [values.topics],
+      topics: [values.topics],
       description: values.description,
       image: imageAddress,
     };
@@ -61,6 +63,9 @@ const CreateNewCourse = () => {
     console.log(coursePostData)
     console.log(result);
     toast.success(result.data.message[0].message);
+    setTimeout(() => {
+      result && history.push("/all-courses")
+    }, 2500)
   }
 
   const validate = (values) => {

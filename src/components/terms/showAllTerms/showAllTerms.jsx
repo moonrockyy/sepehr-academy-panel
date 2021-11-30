@@ -40,7 +40,7 @@ const ShowAllTerms = () => {
           <Link to={`terms-info/${item[1]._id}`}>
             <th scope="row" className={"panel-th-items"}>{item[1].title}</th>
           </Link>
-          <td className={"panel-td-items"}>{item[1].course.topics[1]} </td>
+          <td className={"panel-td-items"}>{item[1].course.topics[0]} </td>
           <td className={"panel-td-items"}>
             <img className={"table-course-img"} src={item[1].course.image} alt=""/>
             {item[1].course.courseName}</td>

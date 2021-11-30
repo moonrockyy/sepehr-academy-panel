@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./createNewTerm.css"
 import "../../searchBox/serachbox.css"
 import PanelTitle from "../../panel-title/panelTitle";
@@ -6,8 +6,26 @@ import {useFormik} from "formik";
 import {toast, ToastContainer} from "react-toastify";
 import CreateTerm from "../../../core/services/api/terms/createTerm.api";
 import {useHistory} from "react-router-dom";
+import GetAllCourses from "../../../core/services/api/courses/getAllCourses.api";
+import GetAllTeachers from "../../../core/services/api/GetAllTeachers.api";
 
 const CreateNewTerm = () => {
+
+  const [allCoursesInfo, setAllCoursesInfo] = useState([]);
+  const [allTeachersInfo, setAllTeachersInfo] = useState([]);
+
+  const getCourses = async () => {
+    const result = await GetAllCourses();
+    setAllCoursesInfo(result);
+  };
+  const getTeachers = async () => {
+    const result = await GetAllTeachers();
+    setAllTeachersInfo(result);
+  };
+  useEffect(() => {
+    getCourses();
+    getTeachers();
+  }, []);
 
   const history = useHistory()
 
@@ -166,7 +184,7 @@ const CreateNewTerm = () => {
               </div>
             </div>
             <div className="row mb-4">
-              <div className="col pt-2">
+              <div className="col-6 pt-2">
                 <input className="form-control me-2 Search-box" type="text"
                        placeholder={"ظرفیت دوره"}
                        aria-label="capacity"
@@ -183,41 +201,31 @@ const CreateNewTerm = () => {
                   ) : null}
                 </div>
               </div>
-              <div className="col pt-2">
-                <input className="form-control me-2 Search-box" type="text"
-                       placeholder={"استاد ترم"}
-                       aria-label="teacher"
-                       id={"teacher-term"}
-                       name="teacher"
-                       onChange={formik.handleChange}
-                       value={formik.values.teacher}
-                       onBlur={formik.handleBlur}
-                       autoComplete="off"
-                />
-                <div className="text-danger mt-1 pe-2">
-                  {formik.touched.teacher && formik.errors.teacher ? (
-                    <div>{formik.errors.teacher}</div>
-                  ) : null}
-                </div>
+              <div className="col-4 pt-2 me-2">
+                <select id={"teacher-term"}
+                        name="teacher"
+                        value={formik.values.teacher}
+                        onChange={formik.handleChange}
+                        className="form-select" aria-label="Teacher select">
+                  <option selected>انتخاب استاد ترم</option>
+                  {Object.entries(allTeachersInfo).map(item => <option value={item[1]._id}>
+                    {item[1].fullName}
+                  </option>)}
+                </select>
               </div>
             </div>
-            <div className={"row mb-3"}>
-              <div className="col pt-2">
-                <input className="form-control me-2 Search-box" type="text"
-                       placeholder={"دوره مرتبط"}
-                       aria-label="course"
-                       id={"course-term"}
-                       name="course"
-                       onChange={formik.handleChange}
-                       value={formik.values.course}
-                       onBlur={formik.handleBlur}
-                       autoComplete="off"
-                />
-                <div className="text-danger mt-1 pe-2">
-                  {formik.touched.course && formik.errors.course ? (
-                    <div>{formik.errors.course}</div>
-                  ) : null}
-                </div>
+            <div className={"row me-1"}>
+              <div className={"col-4"}>
+                <select id={"course-term"}
+                        name="course"
+                        value={formik.values.course}
+                        onChange={formik.handleChange}
+                        className="form-select select-course" aria-label="Course select">
+                  <option selected>انتخاب دوره مرتبط</option>
+                  {Object.entries(allCoursesInfo).map(item => <option value={item[1]._id}>
+                    {item[1].courseName}
+                  </option>)}
+                </select>
               </div>
             </div>
             <div className={"row mt-3 mb-3 me-2"}>

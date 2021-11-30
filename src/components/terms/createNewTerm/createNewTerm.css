@@ -83,4 +83,7 @@
   background-color: #323e73;
   color: white;
 }
-
+.form-select{
+  background-position: left 0.75rem center;
+  color: #6247AA;
+}

@@ -1,54 +1,56 @@
-import React, { useState } from 'react'
-import { useFormik } from 'formik'
-import LoginButton from '../LoginButton/LoginButton'
-import { useHistory } from 'react-router-dom'
-import eyeImg from '../../../assets/images/eyeicon.png'
-import LoginUser from '../../../core/services/api/Login.api'
-import '../Login.css'
+import React, { useState } from "react";
+import { useFormik } from "formik";
+import LoginButton from "../LoginButton/LoginButton";
+import { useHistory } from "react-router-dom";
+import eyeImg from "../../../assets/images/eyeicon.png";
+import LoginUser from "../../../core/services/api/Login.api";
+import "../Login.css";
 
 const LoginForm = () => {
   const initialValues = {
-    email: '',
-    password: '',
-  }
+    email: "",
+    password: "",
+  };
 
-  const history = useHistory()
+  const history = useHistory();
 
   const onSubmit = async (values) => {
     const userLogin = {
       email: values.email,
       password: values.password,
-    }
+    };
 
-    const result = await LoginUser(userLogin)
+    const result = await LoginUser(userLogin);
+
     setTimeout(() => {
       {
-        result && history.push('/')
+        result && history.push("/dashboard");
+        window.location.reload(true);
       }
-    }, 2500)
-  }
+    }, 1500);
+  };
 
   const validate = (values) => {
-    let errors = {}
+    let errors = {};
 
     if (!values.email) {
-      errors.email = 'ایمیل خود را وارد کنید'
+      errors.email = "ایمیل خود را وارد کنید";
     }
 
     if (!values.password) {
-      errors.password = 'رمز عبور خود را وارد کنید'
+      errors.password = "رمز عبور خود را وارد کنید";
     }
 
-    return errors
-  }
+    return errors;
+  };
 
   const formik = useFormik({
     initialValues,
     onSubmit,
     validate,
-  })
+  });
 
-  const [passwordShown, setPasswordShown] = useState(true)
+  const [passwordShown, setPasswordShown] = useState(true);
   return (
     <>
       <form onSubmit={formik.handleSubmit} className="mt-4">
@@ -65,13 +67,15 @@ const LoginForm = () => {
             autoComplete="off"
           />
           <div className="mt-1 text-danger">
-            {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
+            {formik.touched.email && formik.errors.email ? (
+              <div>{formik.errors.email}</div>
+            ) : null}
           </div>
         </div>
 
         <div className="mb-3 pass-form">
           <input
-            type={passwordShown ? 'password' : 'text'}
+            type={passwordShown ? "password" : "text"}
             className="form-control"
             placeholder="رمز عبور"
             id="password"
@@ -85,7 +89,7 @@ const LoginForm = () => {
           <div
             className="pass-eye"
             onClick={() => {
-              setPasswordShown(!passwordShown)
+              setPasswordShown(!passwordShown);
             }}
           >
             <img src={eyeImg} />
@@ -103,7 +107,7 @@ const LoginForm = () => {
         </div>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

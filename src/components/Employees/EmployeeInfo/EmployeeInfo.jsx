@@ -1,35 +1,40 @@
-import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
-import Img from '../../../assets/images/avatars/2.jpg'
-import { clearStorage, getItem } from '../../../core/services/storage/storage'
-import jwt_decode from 'jwt-decode'
-import GetEmployeeById from '../../../core/services/api/GetEmployeeById.api'
-import './EmployeeInfo.css'
+import React, { useState, useEffect, useContext } from "react";
+import { useLocation, useHistory } from "react-router-dom";
+import Img from "../../../assets/images/avatars/2.jpg";
+import { removeItem } from "../../../core/services/storage/storage";
+import GetEmployeeById from "../../../core/services/api/GetEmployeeById.api";
+import "./EmployeeInfo.css";
+import User from "src/core/context/UserContext/UserContext";
 
 const EmployeeInfo = () => {
-  const [EmployeeByIdData, setEmployeeByIdData] = useState([])
+  const [EmployeeByIdData, setEmployeeByIdData] = useState([]);
+  const user = useContext(User);
+  console.log(user);
 
   const getEmployeeById = async () => {
-    const token = getItem('token')
-    const id = jwt_decode(token)._id
-    const result = await GetEmployeeById(id)
-    setEmployeeByIdData(result)
-  }
+    const id = user.user._id;
+    console.log(id);
+    const result = await GetEmployeeById(id);
+    setEmployeeByIdData(result);
+  };
 
-  const history = useHistory()
+  const history = useLocation();
+  console.log(history);
+  const history2 = useHistory();
 
   const logOut = () => {
-    clearStorage()
-    history.push('/login')
-  }
+    user.setUser(null);
+    removeItem("token");
+    history2.push("/login");
+  };
 
   const GoToUpdate = () => {
-    history.push('/update-info')
-  }
+    history2.push("/update-info");
+  };
 
   useEffect(() => {
-    getEmployeeById()
-  }, [])
+    getEmployeeById();
+  }, []);
   return (
     <>
       <div className="employee-info white-background">
@@ -48,16 +53,22 @@ const EmployeeInfo = () => {
         </div>
 
         <div className="buttons d-flex flex-column align-items-center justify-content-center">
-          <button onClick={() => GoToUpdate()} className="btn btn-primary edit-btn">
+          <button
+            onClick={() => GoToUpdate()}
+            className="btn btn-primary edit-btn"
+          >
             ویرایش
           </button>
-          <button onClick={() => logOut()} className="btn btn-danger exit-btn mt-3">
+          <button
+            onClick={() => logOut()}
+            className="btn btn-danger exit-btn mt-3"
+          >
             خروج از حساب
           </button>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default EmployeeInfo
+export default EmployeeInfo;

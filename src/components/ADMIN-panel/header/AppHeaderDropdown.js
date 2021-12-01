@@ -28,7 +28,7 @@ import avatar8 from "../../../assets/images/avatars/img4.png";
 const AppHeaderDropdown = () => {
   const logOut = () => {
     clearStorage();
-    history.push("/login");
+    history.push("/");
   };
 
   return (

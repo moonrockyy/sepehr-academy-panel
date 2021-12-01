@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import Img from "../../../assets/images/avatars/2.jpg";
-import { removeItem } from "../../../core/services/storage/storage";
+import { clearStorage } from "../../../core/services/storage/storage";
 import GetEmployeeById from "../../../core/services/api/GetEmployeeById.api";
 import "./EmployeeInfo.css";
 import User from "src/core/context/UserContext/UserContext";
@@ -24,7 +24,7 @@ const EmployeeInfo = () => {
 
   const logOut = () => {
     user.setUser(null);
-    removeItem("token");
+    clearStorage();
     history2.push("/login");
   };
 

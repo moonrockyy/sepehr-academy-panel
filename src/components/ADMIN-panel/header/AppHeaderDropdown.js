@@ -1,5 +1,7 @@
-import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { clearStorage } from "../../../core/services/storage/storage";
+import User from "src/core/context/UserContext/UserContext";
 import {
   CAvatar,
   CBadge,
@@ -22,12 +24,15 @@ import {
   cilUser,
 } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
-
 import avatar8 from "../../../assets/images/avatars/img4.png";
 
 const AppHeaderDropdown = () => {
+  const user = useContext(User);
+  const history = useHistory();
+
   const logOut = () => {
     clearStorage();
+    user.setUser(null);
     history.push("/");
   };
 
@@ -73,16 +78,15 @@ const AppHeaderDropdown = () => {
           </CBadge>
         </CDropdownItem>
         <CDropdownDivider />
-        <Link to="/login">
-          <CDropdownItem>
-            <CIcon
-              onClick={() => logOut()}
-              icon={cilLockLocked}
-              className="ms-2"
-            />
-            خروج
-          </CDropdownItem>
-        </Link>
+
+        <CDropdownItem>
+          <CIcon
+            onClick={() => logOut()}
+            icon={cilLockLocked}
+            className="ms-2"
+          />
+          خروج
+        </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
   );

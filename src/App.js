@@ -12,25 +12,21 @@ const loading = (
   </div>
 );
 
-// Containers
 const DefaultLayout = React.lazy(() => import("./layout/DefaultLayout"));
-
-// Pages
 
 const App = () => {
   const [user, setUser] = useState();
-  useEffect(async() =>{
-    if(!getItem("token")) return null
+  useEffect(async () => {
+    if (!getItem("token")) return null;
     const user = await GetEmployeeDetail();
-    console.log(user)
     setUser(user.result);
-  },[])
+  }, []);
 
   return (
     <HashRouter>
       <React.Suspense fallback={loading}>
         <Switch>
-          <UserProvider value={{user,setUser}}>
+          <UserProvider value={{ user, setUser }}>
             {user ? (
               <Route
                 path="/"
@@ -38,8 +34,9 @@ const App = () => {
               />
             ) : (
               <>
-                <Route path="/login" render={() => <Login />} />
-                <Route path="/register" render={() => <Register />} />
+                <Route path="/" exact component={user ? null : Login} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
               </>
             )}
           </UserProvider>

@@ -1,5 +1,5 @@
-import React from 'react'
-import { useHistory, Link } from 'react-router-dom'
+import React from "react";
+import { useHistory, Link } from "react-router-dom";
 import {
   CAvatar,
   CBadge,
@@ -9,7 +9,7 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-} from '@coreui/react'
+} from "@coreui/react";
 import {
   cilBell,
   cilCreditCard,
@@ -20,19 +20,26 @@ import {
   cilSettings,
   cilTask,
   cilUser,
-} from '@coreui/icons'
-import CIcon from '@coreui/icons-react'
+} from "@coreui/icons";
+import CIcon from "@coreui/icons-react";
 
-import avatar8 from '../../../assets/images/avatars/img4.png'
+import avatar8 from "../../../assets/images/avatars/img4.png";
 
 const AppHeaderDropdown = () => {
+  const logOut = () => {
+    clearStorage();
+    history.push("/login");
+  };
+
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
         <CAvatar src={avatar8} size="md" />
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
-        <CDropdownHeader className="bg-light fw-semibold py-2">پروفایل</CDropdownHeader>
+        <CDropdownHeader className="bg-light fw-semibold py-2">
+          پروفایل
+        </CDropdownHeader>
         <CDropdownItem href="#">
           <CIcon icon={cilBell} className="ms-2" />
           بروزرسانی
@@ -47,7 +54,9 @@ const AppHeaderDropdown = () => {
             4
           </CBadge>
         </CDropdownItem>
-        <CDropdownHeader className="bg-light fw-semibold py-2">تنظیمات</CDropdownHeader>
+        <CDropdownHeader className="bg-light fw-semibold py-2">
+          تنظیمات
+        </CDropdownHeader>
         <CDropdownItem href="#">
           <CIcon icon={cilUser} className="ms-2" />
           پروفایل
@@ -66,13 +75,17 @@ const AppHeaderDropdown = () => {
         <CDropdownDivider />
         <Link to="/login">
           <CDropdownItem>
-            <CIcon icon={cilLockLocked} className="ms-2" />
+            <CIcon
+              onClick={() => logOut()}
+              icon={cilLockLocked}
+              className="ms-2"
+            />
             خروج
           </CDropdownItem>
         </Link>
       </CDropdownMenu>
     </CDropdown>
-  )
-}
+  );
+};
 
-export default AppHeaderDropdown
+export default AppHeaderDropdown;

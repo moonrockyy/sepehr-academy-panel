@@ -63,20 +63,18 @@ const ShowAllComments = () => {
                   <div className={'row'}>
                     <div className={'col-4'}>
                       <Tooltip title="پذیرفتن">
-                        <IconButton>
+                        <IconButton onClick={() => handleVerify(comment)}>
                           <DoneIcon
-                            onClick={() => handleVerify(comment)}
-                            className={'edit-color'}
+                            className={'success-color'}
                           />
                         </IconButton>
                       </Tooltip>
                     </div>
                     <div className={'col-4'}>
                       <Tooltip title="حذف">
-                        <IconButton>
+                        <IconButton  onClick={() => handleDelete(comment)}>
                           <DeleteTwoToneIcon
-                            onClick={() => handleDelete(comment)}
-                            className={'delete-color'}
+                            className={'danger-color'}
                           />
                         </IconButton>
                       </Tooltip>

@@ -37,9 +37,11 @@ const ShowAllTerms = () => {
         </thead>
         <tbody>
         {Object.entries(allTermsData).map(item => <tr key={item[1]._id} className={"green-hover"}>
-          <Link to={`terms-info/${item[1]._id}`}>
-            <th scope="row" className={"panel-th-items"}>{item[1].title}</th>
-          </Link>
+            <th scope="row" className={"panel-th-items"}>
+              <Link className={"panel-th-items"} to={`terms-info/${item[1]._id}`}>
+              {item[1].title}
+              </Link>
+            </th>
           <td className={"panel-td-items"}>{item[1].course.topics[0]} </td>
           <td className={"panel-td-items"}>
             <img className={"table-course-img"} src={item[1].course.image} alt=""/>

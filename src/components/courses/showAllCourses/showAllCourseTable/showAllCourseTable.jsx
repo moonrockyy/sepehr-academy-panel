@@ -19,12 +19,12 @@ const ShowAllCourseTable = (props) => {
         </tr>
         </thead>
         <tbody>
-        {Object.entries(props.allCourseData).map(item => <tr key={item._id} className={"green-hover"}>
-            <Link to={`/course-info/${item[1]._id}`}>
+        {Object.entries(props.allCourseData).map(item => <tr key={item[1]._id} className={"green-hover"}>
               <th scope="row" className={"course-th-items"}>
+                <Link className={"course-th-items"} to={`/course-info/${item[1]._id}`}>
                 {item[1].courseName}
+                </Link>
               </th>
-            </Link>
             <td className={"course-td-items-topics"}> {item[1].topics[0]}</td>
             <td className={"course-td-items"}> {item[1].description}</td>
             <td className={"course-td-items"}>

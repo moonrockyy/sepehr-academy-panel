@@ -54,9 +54,8 @@ const ShowAllStudents = () => {
                   </td>
 
                   <td scope="row" className={'course-th-items'}>
-                    <IconButton>
+                    <IconButton onClick={() => DeleteStudentById(student)}>
                       <DeleteTwoToneIcon
-                        onClick={() => DeleteStudentById(student)}
                         className={'delete-color'}
                       />
                     </IconButton>

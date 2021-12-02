@@ -50,11 +50,9 @@ const ShowAlladmins = () => {
                 </td>
 
                 <td scope="row" className={'course-th-items'}>
-                  <IconButton>
+                  <IconButton onClick={() => handleDelete(teacher)}>
                     <DeleteTwoToneIcon
-                      onClick={() => handleDelete(teacher)}
-                      className={'delete-color'}
-                    />
+                      className={'delete-color-admin'}/>
                   </IconButton>
                 </td>
               </tr>

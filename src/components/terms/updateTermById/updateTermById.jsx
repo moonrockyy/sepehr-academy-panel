@@ -209,8 +209,8 @@ const UpdateTermById = () => {
                         value={formik.values.teacher}
                         onChange={formik.handleChange}
                         className="form-select" aria-label="Teacher select">
-                  <option selected>انتخاب استاد جدید ترم</option>
-                  {Object.entries(allTeachersInfo).map(item => <option value={item[1]._id}>
+                  <option defaultValue={''}>انتخاب استاد جدید ترم</option>
+                  {Object.entries(allTeachersInfo).map(item => <option key={item[1]._id} value={item[1]._id}>
                     {item[1].fullName}
                   </option>)}
                 </select>
@@ -223,8 +223,8 @@ const UpdateTermById = () => {
                         value={formik.values.course}
                         onChange={formik.handleChange}
                         className="form-select select-course" aria-label="Course select">
-                  <option selected>انتخاب دوره مرتبط</option>
-                  {Object.entries(allCoursesInfo).map(item => <option value={item[1]._id}>
+                  <option defaultValue={''}>انتخاب دوره مرتبط</option>
+                  {Object.entries(allCoursesInfo).map(item => <option key={item[1]._id} value={item[1]._id}>
                     {item[1].courseName}
                   </option>)}
                 </select>

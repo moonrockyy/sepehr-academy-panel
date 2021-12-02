@@ -35,9 +35,11 @@ const ShowAllNews = () => {
         </thead>
         <tbody>
         {Object.entries(allNewsData).map(item => <tr key={item[1]._id} className={"green-hover"}>
-          <Link to={`/news-info/${item[1]._id}`}>
-            <th scope="row" className={"panel-th-items"}>{item[1].title}</th>
-          </Link>
+            <th scope="row" className={"panel-th-items"}>
+              <Link className={"panel-th-items"} to={`/news-info/${item[1]._id}`}>
+              {item[1].title}
+              </Link>
+            </th>
           <td className={"panel-td-items"}>{item[1].text} </td>
           <td className={"panel-td-items"}>
             <img className={"table-news-img"} src={item[1].image} alt=""/>

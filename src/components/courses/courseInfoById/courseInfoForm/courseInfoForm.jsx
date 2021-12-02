@@ -11,7 +11,7 @@ const CourseInfoForm = (props) => {
             <img src={props.courseByIdData.image} className="card-img-top" alt="..."/>
             <div className="card-body">
               <h5 className="card-title"> {props.courseByIdData.courseName} </h5>
-              <p className="card-text">
+              <div className="card-text">
                 <div className="mt-2">
                   <span
                     className="course-teacher col-sm-4 me-1 ">{props.courseByIdData.description}</span>
@@ -45,7 +45,7 @@ const CourseInfoForm = (props) => {
                     </div>
                   </div>
                 </div>
-              </p>
+              </div>
             </div>
           </div>
         </div>

@@ -63,8 +63,6 @@ const UpdateTermById = React.lazy(() =>
 
 const routes = [
   {path: "/", exact: true, name: "Home"},
-  {path: "/login", name: "Login", component: Login},
-  {path: "/register", name: "Register", component: Register},
   {path: "/dashboard", name: "Dashboard", component: Dashboard},
   {path: "/create-term", name: "create-term", component: CreateTerm},
   {path: "/all-terms", name: "all-term", component: ShowAllTerms},

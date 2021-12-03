@@ -7,6 +7,9 @@ $enable-rtl: true;
   font-family: Dirooz;
   src: url('./../assets/fonts/Dirooz.ttf') ;
 }
+.header-brand {
+  display: none !important;
+}
 
 body {
   direction: rtl;

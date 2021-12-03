@@ -45,7 +45,6 @@ html:not([dir="rtl"]) .sidebar.hide:not(.sidebar-end) {
 
 .admin-nav-link {
   color: #323E73 !important;
-  opacity: 80%;
 }
 
 .active-admin-header {
@@ -53,7 +52,7 @@ html:not([dir="rtl"]) .sidebar.hide:not(.sidebar-end) {
 }
 
 .admin-nav-link:hover {
-  opacity: 100%;
+
 }
 
 .dropdown > .nav-link {
@@ -73,7 +72,7 @@ html:not([dir="rtl"]) .sidebar.hide:not(.sidebar-end) {
 }
 
 .nav-group-items > .nav-item > .nav-link {
-  color:  #82d8b9 !important;
+  color: #82d8b9 !important;
 }
 
 // Import CoreUI for React components library
@@ -87,3 +86,21 @@ html:not([dir="rtl"]) .sidebar.hide:not(.sidebar-end) {
 
 // If you want to add custom CSS you can put it here.
 @import "custom";
+
+@media only screen and (max-width: 767.98px) {
+  html:not([dir="rtl"]) .sidebar:not(.sidebar-end):not(.show) {
+    margin-right: calc(-1 * var(--cui-sidebar-width)) !important;
+  }
+  .tr-color-term{
+    font-size: 10px;
+  }
+  .panel-th-items-terms{
+    font-size: 10px !important;
+  }
+  .panel-td-items-terms{
+    font-size: 10px !important;
+  }
+  .table-course-img{
+    width: 35px !important;
+  }
+}

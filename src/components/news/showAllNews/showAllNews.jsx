@@ -6,6 +6,7 @@ import ModeEditTwoToneIcon from "@mui/icons-material/ModeEditTwoTone";
 import DeleteTwoToneIcon from "@mui/icons-material/DeleteTwoTone";
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import {FaUsers} from "react-icons/all";
 
 const ShowAllNews = () => {
   const [allNewsData, setAllNewsData] = useState([]);

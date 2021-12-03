@@ -21,7 +21,6 @@
     color: #198643;
     padding-right: 8px;
     font-size: 15px;
-    opacity: 80%;
 }
 .panel-user-upload{
     width: 57px;
@@ -57,7 +56,6 @@
 }
 .upload-text-2{
     color: #6247AA;
-    opacity: 65%;
     font-size: 15px;
     position: relative;
     right: -95px;

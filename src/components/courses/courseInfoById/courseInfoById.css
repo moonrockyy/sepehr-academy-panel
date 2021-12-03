@@ -46,13 +46,11 @@
 .course-teacher {
   font-size: 15px;
   color: #323E73;
-  opacity: 70%;
   cursor: pointer;
 }
 
 .card-line {
   width: 100%;
-  opacity: 40%;
   margin-top: 16px;
 }
 
@@ -69,7 +67,6 @@
   color: #323E73;
   font-size: 13px;
   cursor: pointer;
-  opacity: 80%;
 }
 
 .card-price {

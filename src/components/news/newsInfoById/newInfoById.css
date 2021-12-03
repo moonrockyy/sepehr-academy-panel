@@ -91,7 +91,6 @@
 
 .card-line {
   width: 100%;
-  opacity: 40%;
   margin-top: 16px;
 }
 
@@ -108,7 +107,6 @@
 }
 .card-text-news{
   color: #323e73;
-  opacity: 70%;
   font-size: 14px;
 }
 

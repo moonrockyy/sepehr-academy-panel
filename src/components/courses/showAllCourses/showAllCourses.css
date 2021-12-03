@@ -9,14 +9,12 @@
 
 .course-td-items {
   color: #323e73 !important;
-  opacity: 80%;
   font-size: 14px;
   padding: 10px !important;
 }
 
 .course-td-items-topics {
   color: #6247AA !important;
-  opacity: 80%;
   font-size: 14px;
   padding: 10px !important;
 }
@@ -55,7 +53,6 @@
 }
 
 .course-td-btn {
-  opacity: 95%;
   margin-top: 7px !important;
 }
 .delete-color{
